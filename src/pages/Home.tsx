@@ -4,14 +4,15 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import styles from "../style/Home.module.scss";
-import Movie from "../types/Movie";
+import MovieType from "../types/Movie";
 import searchMovie from "../utils/api/searchMovie";
+import Movie from "../components/Movie";
 
 interface Props extends RouteComponentProps {}
 
 const Home = ({}: Props) => {
   const [query, setQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<Movie[]>();
+  const [searchResults, setSearchResults] = useState<MovieType[]>();
 
   useEffect(() => {
     (async () => {
@@ -56,26 +57,12 @@ const Home = ({}: Props) => {
           </div>
           {searchResults && (
             <div className={styles.searchResults}>
-              {searchResults.map((movie: Movie) => (
-                <Link
-                  to={`/movie/${movie.id}`}
-                  key={movie.id}
-                  className={styles.movie}
-                >
-                  <div>
-                    <div className={styles.imgWrapper}>
-                      <img
-                        src={
-                          movie.poster_path
-                            ? `https://image.tmdb.org/t/p/w92/${movie.poster_path}`
-                            : "https://via.placeholder.com/100x150"
-                        }
-                      />
-                    </div>
-                    <p>{movie.title}</p>
-                  </div>
-                  <IoIosArrowForward size="24px" color="white" />
-                </Link>
+              {searchResults.map((movie: MovieType) => (
+                <Movie
+                  id={movie.id}
+                  title={movie.title}
+                  poster_path={movie.poster_path}
+                />
               ))}
             </div>
           )}
