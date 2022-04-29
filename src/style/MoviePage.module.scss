@@ -1,7 +1,7 @@
 .backdropContainer {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -10;
@@ -14,7 +14,6 @@
     object-position: center;
     display: block;
     width: 100%;
-    max-height: 100vh;
     height: 100%;
   }
 }
@@ -33,11 +32,16 @@
   //   rgba(0, 0, 0, 0.2329306722689075) 52%,
   //   rgba(0, 0, 0, 0) 100%
   // );
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 
   > div {
     width: 50%;
     padding: 48px;
+  }
+
+  .back {
+    color: white;
   }
 
   h1 {
@@ -86,9 +90,17 @@
     }
 
     .links {
+      display: flex;
+      column-gap: 8px;
+
       a {
         display: flex;
         color: white;
+      }
+
+      img {
+        width: 32px;
+        height: 32px;
       }
     }
   }
