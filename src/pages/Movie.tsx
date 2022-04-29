@@ -9,7 +9,7 @@ const Movie = () => {
   const { id } = useParams();
   //Use prop to fetch movie?
   const [loading, setLoading] = useState<boolean>(true);
-  const { movie, notFound } = useMovie(id ?? "0");
+  const [movie, notFound] = useMovie(id ?? "0");
 
   useEffect(() => {
     setLoading(false);
