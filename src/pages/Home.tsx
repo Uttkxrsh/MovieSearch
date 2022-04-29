@@ -1,4 +1,3 @@
-import { Link, navigate, RouteComponentProps } from "@gatsbyjs/reach-router";
 import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
@@ -7,10 +6,12 @@ import styles from "../style/Home.module.scss";
 import MovieType from "../types/Movie";
 import searchMovie from "../utils/api/searchMovie";
 import Movie from "../components/Movie";
+import { useNavigate } from "react-router-dom";
 
-interface Props extends RouteComponentProps {}
+interface Props {}
 
 const Home = ({}: Props) => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<MovieType[]>();
 

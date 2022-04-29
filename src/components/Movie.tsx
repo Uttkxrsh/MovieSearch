@@ -1,6 +1,6 @@
-import { Link } from "@gatsbyjs/reach-router";
 import { IoIosArrowForward } from "react-icons/io";
 import styles from "../style/Movie.module.scss";
+import { Link } from "react-router-dom";
 
 interface Props {
   id: number;

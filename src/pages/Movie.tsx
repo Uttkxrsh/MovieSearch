@@ -1,13 +1,12 @@
-import { RouteComponentProps } from "@gatsbyjs/reach-router";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 import NotFound from "./NotFound";
 
-interface Props extends RouteComponentProps {
-  id?: string;
-}
+interface Props {}
 
-const Movie = ({ id }: Props) => {
+const Movie = () => {
+  const { id } = useParams();
   //Use prop to fetch movie?
   const [loading, setLoading] = useState<boolean>(true);
   const { movie, notFound } = useMovie(id ?? "0");

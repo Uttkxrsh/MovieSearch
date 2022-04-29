@@ -1,10 +1,7 @@
-import { RouteComponentProps } from "@gatsbyjs/reach-router";
+import { useParams } from "react-router-dom";
 
-interface Props extends RouteComponentProps {
-  query?: string;
-}
-
-const Search = ({ query }: Props) => {
+const Search = () => {
+  const { query } = useParams();
   return <h1>Search: {query}</h1>;
 };
 

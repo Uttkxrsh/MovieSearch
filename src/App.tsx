@@ -1,17 +1,17 @@
-import { Router } from "@gatsbyjs/reach-router";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 import Movie from "./pages/Movie";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
-      <Home path="/" />
-      <Search path="/search/:query" />
-      <Movie path="/movie/:id" />
-      <NotFound default />
-    </Router>
+    <Routes>
+      <Route element={<Home />} path="/" />
+      <Route element={<Search />} path="/search/:query" />
+      <Route element={<Movie />} path="/movie/:id" />
+      <Route element={<NotFound />} path="*" />
+    </Routes>
   );
 }
 

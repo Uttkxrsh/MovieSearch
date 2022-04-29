@@ -1,6 +1,4 @@
-import { RouteComponentProps } from "@gatsbyjs/reach-router";
-
-interface Props extends RouteComponentProps {}
+interface Props {}
 
 const NotFound = ({}: Props) => {
   return <h1>Not found</h1>;
