@@ -10,6 +10,7 @@ import { FaImdb } from "react-icons/fa";
 import urlBuilder from "../utils/urlBuilder";
 import PlatformSelect from "../components/PlatformSelect";
 import { paramCase } from "change-case";
+import tmdbLogo from "../assets/tmdb_logo.svg";
 
 interface Props {}
 
@@ -34,10 +35,12 @@ const Movie = () => {
           movie.backdrop_path ? styles.noBackdrop : styles.isBackdrop
         }`}
       >
-        <img
-          className={styles.backdrop}
-          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-        />
+        {movie.backdrop_path && (
+          <img
+            className={styles.backdrop}
+            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+          />
+        )}
       </div>
       <div className={styles.main}>
         <div>
@@ -70,7 +73,7 @@ const Movie = () => {
                   movie.title
                 )}`}
               >
-                <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" />
+                <img src={tmdbLogo} />
               </a>
             </div>
           </div>
