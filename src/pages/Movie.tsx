@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 import NotFound from "./NotFound";
+import styles from "../style/MoviePage.module.scss";
 
 interface Props {}
 
@@ -19,7 +20,23 @@ const Movie = () => {
 
   if (notFound || !movie) return <NotFound />;
 
-  return <h1>Movie id: {movie.title}</h1>;
+  console.log(movie);
+
+  return (
+    <div>
+      <div
+        className={`${styles.backdropContainer} ${
+          movie.backdrop_path ? styles.noBackdrop : styles.isBackdrop
+        }`}
+      >
+        <img
+          className={styles.backdrop}
+          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        />
+      </div>
+      <div className={styles.main}>{movie.title}</div>
+    </div>
+  );
 };
 
 export default Movie;
