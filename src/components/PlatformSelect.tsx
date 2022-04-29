@@ -53,11 +53,14 @@ const PlatformSelect = ({ movieId }: Props) => {
             </option>
           ))}
         </select>
+        <small>
+          Data provided by <a href="https://justwatch.com">JustWatch</a>
+        </small>
       </div>
       {choosenCountry && (
         <div className={styles.platforms}>
           {watchProviders[choosenCountry].flatrate && (
-            <div className={styles.stream}>
+            <div className={styles.watchOption}>
               <p>Stream</p>
               <div className={styles.platformList}>
                 {watchProviders[choosenCountry].flatrate.map((provider) => (
@@ -71,7 +74,7 @@ const PlatformSelect = ({ movieId }: Props) => {
             </div>
           )}
           {watchProviders[choosenCountry].rent && (
-            <div className={styles.rent}>
+            <div className={styles.watchOption}>
               <p>Rent</p>
               <div className={styles.platformList}>
                 {watchProviders[choosenCountry].rent.map((provider) => (
@@ -85,7 +88,7 @@ const PlatformSelect = ({ movieId }: Props) => {
             </div>
           )}
           {watchProviders[choosenCountry].buy && (
-            <div className={styles.buy}>
+            <div className={styles.watchOption}>
               <p>Buy</p>
               <div className={styles.platformList}>
                 {watchProviders[choosenCountry].buy.map((provider) => (
