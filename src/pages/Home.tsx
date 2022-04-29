@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { KeyboardEvent, useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
@@ -30,6 +30,12 @@ const Home = ({}: Props) => {
     })();
   }, [query]);
 
+  const handleInputSubmit = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      navigate(`/search/${query}`);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -39,6 +45,7 @@ const Home = ({}: Props) => {
             <input
               type="text"
               onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleInputSubmit}
               value={query}
             />
             <div>
