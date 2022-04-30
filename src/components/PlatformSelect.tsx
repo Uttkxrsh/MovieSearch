@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import styles from "../style/PlatformSelect.module.scss";
 import WatchProvider from "../types/WatchProvider";
 import WatchProviderObject from "../types/WatchProviderObject";
+import sortWatchProviders from "../utils/sortWatchProviders";
 import translateCountryCode from "../utils/translateCountryCode";
 import urlBuilder from "../utils/urlBuilder";
 
@@ -27,7 +28,7 @@ const PlatformSelect = ({ movieId }: Props) => {
         await watchProvidersRequest.json();
 
       if (watchProvidersRequest.ok) {
-        setWatchProviders(watchProviders.results);
+        setWatchProviders(sortWatchProviders(watchProviders.results));
       }
     })();
   }, []);
