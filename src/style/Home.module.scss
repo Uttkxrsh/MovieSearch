@@ -42,7 +42,12 @@
 .searchResults {
   margin-top: 24px;
 
-  .moreBtn {
-    color: white;
+  .moreContainer {
+    padding-top: 8px;
+    border-top: 1px solid white;
+
+    a {
+      color: white;
+    }
   }
 }

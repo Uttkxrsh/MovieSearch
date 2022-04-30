@@ -1,6 +1,7 @@
 import { IoIosArrowForward } from "react-icons/io";
 import styles from "../style/Movie.module.scss";
 import { Link } from "react-router-dom";
+import missingPoster from "../assets/missing_poster.png";
 
 interface Props {
   id: number;
@@ -18,7 +19,7 @@ const Movie = ({ id, poster_path, title }: Props) => {
             src={
               poster_path
                 ? `https://image.tmdb.org/t/p/w92/${poster_path}`
-                : "https://via.placeholder.com/100x150"
+                : missingPoster
             }
           />
         </div>

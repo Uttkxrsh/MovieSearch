@@ -73,9 +73,9 @@ const Home = ({}: Props) => {
                 />
               ))}
               {searchResults.length > 0 && (
-                <Link to={`/search/${query}`} className={styles.moreBtn}>
-                  More results
-                </Link>
+                <div className={styles.moreContainer}>
+                  <Link to={`/search/${query}`}>More results</Link>
+                </div>
               )}
             </div>
           )}
