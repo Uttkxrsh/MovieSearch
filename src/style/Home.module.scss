@@ -3,13 +3,10 @@
   align-items: center;
   flex-direction: column;
   vertical-align: middle;
-  margin: 48px;
+  margin: 48px 48px 90px 48px;
   h1 {
     font-size: 48px;
   }
-}
-
-.formContainer {
 }
 
 .inputContainer {
@@ -43,4 +40,8 @@
 
 .searchResults {
   margin-top: 24px;
+
+  .moreBtn {
+    color: white;
+  }
 }

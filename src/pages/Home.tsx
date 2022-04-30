@@ -6,7 +6,7 @@ import styles from "../style/Home.module.scss";
 import MovieType from "../types/Movie";
 import searchMovie from "../utils/api/searchMovie";
 import Movie from "../components/Movie";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Props {}
 
@@ -73,6 +73,11 @@ const Home = ({}: Props) => {
                   poster_path={movie.poster_path}
                 />
               ))}
+              {searchResults.length > 0 && (
+                <Link to={`/search/${query}`} className={styles.moreBtn}>
+                  More results
+                </Link>
+              )}
             </div>
           )}
         </div>
