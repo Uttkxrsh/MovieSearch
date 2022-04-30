@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Movie from "../types/Movie";
+import SearchResults from "../types/SearchResult";
 import urlBuilder from "../utils/urlBuilder";
 
 export default (query: string): Movie[] => {
@@ -10,7 +11,7 @@ export default (query: string): Movie[] => {
       const request = await fetch(urlBuilder("/search/movie", { query }));
 
       if (request.ok) {
-        const { results } = await request.json();
+        const { results }: SearchResults = await request.json();
 
         setSearchResults(results);
       }
