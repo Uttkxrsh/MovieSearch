@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Movie from "../types/Movie";
 import getMovie from "../utils/api/getMovie";
 
-export default (id: string): [Movie | null, boolean] => {
+const useMovie = (id: string): [Movie | null, boolean] => {
   const [movie, setMovie] = useState<Movie | null>(null);
   const [notFound, setNotFound] = useState<boolean>(false);
 
@@ -20,3 +20,5 @@ export default (id: string): [Movie | null, boolean] => {
 
   return [movie, notFound];
 };
+
+export default useMovie;

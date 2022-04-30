@@ -14,6 +14,7 @@ const Movie = ({ id, poster_path, title }: Props) => {
       <div>
         <div className={styles.imgWrapper}>
           <img
+            alt={`Poster for ${title}`}
             src={
               poster_path
                 ? `https://image.tmdb.org/t/p/w92/${poster_path}`

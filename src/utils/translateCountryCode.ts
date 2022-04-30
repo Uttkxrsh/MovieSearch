@@ -250,7 +250,7 @@ var list = [
   { code: "ZW", name: "Zimbabwe" },
 ];
 
-export default (countryCode: string): string | null => {
+const translateCountryCode = (countryCode: string): string | null => {
   const i = list.findIndex((country) => country.code === countryCode);
 
   if (i >= 0) {
@@ -259,3 +259,5 @@ export default (countryCode: string): string | null => {
 
   return null;
 };
+
+export default translateCountryCode;

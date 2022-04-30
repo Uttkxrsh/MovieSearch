@@ -1,6 +1,5 @@
 import { KeyboardEvent, useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { IoIosArrowForward } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import styles from "../style/Home.module.scss";
 import MovieType from "../types/Movie";

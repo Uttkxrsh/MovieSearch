@@ -3,7 +3,7 @@ import Movie from "../types/Movie";
 import SearchResults from "../types/SearchResult";
 import urlBuilder from "../utils/urlBuilder";
 
-export default (query: string): Movie[] => {
+const useSearch = (query: string): Movie[] => {
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
 
   useEffect(() => {
@@ -20,3 +20,5 @@ export default (query: string): Movie[] => {
 
   return searchResults;
 };
+
+export default useSearch;

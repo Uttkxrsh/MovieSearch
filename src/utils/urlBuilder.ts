@@ -1,4 +1,4 @@
-export default (
+const urlBuilder = (
   endpoint: string,
   parameters?: { [key: string]: string }
 ): string => {
@@ -11,3 +11,5 @@ export default (
 
   return `https://api.themoviedb.org/3/${endpoint}?${parsedParameters}`;
 };
+
+export default urlBuilder;

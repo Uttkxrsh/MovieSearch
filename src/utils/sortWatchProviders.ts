@@ -2,7 +2,9 @@ import WatchProviderObject from "../types/WatchProviderObject";
 import translateCountryCode from "./translateCountryCode";
 
 //https://stackoverflow.com/a/45544166
-export default (watchProviders: WatchProviderObject): WatchProviderObject => {
+const sortWatchProviders = (
+  watchProviders: WatchProviderObject
+): WatchProviderObject => {
   return Object.keys(watchProviders)
     .sort((a: string, b: string): number => {
       const aName = translateCountryCode(a) ?? "";
@@ -16,3 +18,5 @@ export default (watchProviders: WatchProviderObject): WatchProviderObject => {
       return obj;
     }, {});
 };
+
+export default sortWatchProviders;

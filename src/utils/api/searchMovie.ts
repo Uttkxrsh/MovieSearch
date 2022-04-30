@@ -1,7 +1,7 @@
 import Movie from "../../types/Movie";
 import urlBuilder from "../urlBuilder";
 
-export default async (query: string): Promise<Movie[] | null> => {
+const searchMovie = async (query: string): Promise<Movie[] | null> => {
   const request = await fetch(
     urlBuilder("/search/movie", {
       query,
@@ -16,3 +16,5 @@ export default async (query: string): Promise<Movie[] | null> => {
 
   return null;
 };
+
+export default searchMovie;

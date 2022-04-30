@@ -1,7 +1,7 @@
 import Movie from "../../types/Movie";
 import urlBuilder from "../urlBuilder";
 
-export default async (id: string): Promise<Movie | null> => {
+const getMovie = async (id: string): Promise<Movie | null> => {
   const request = await fetch(urlBuilder(`/movie/${id}`));
 
   const response = await request.json();
@@ -12,3 +12,5 @@ export default async (id: string): Promise<Movie | null> => {
 
   return null;
 };
+
+export default getMovie;

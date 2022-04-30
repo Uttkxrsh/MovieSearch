@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 import NotFound from "./NotFound";
 import styles from "../style/MoviePage.module.scss";
-import { BsDot } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
 import { FaImdb } from "react-icons/fa";
-import urlBuilder from "../utils/urlBuilder";
 import PlatformSelect from "../components/PlatformSelect";
 import { paramCase } from "change-case";
 import tmdbLogo from "../assets/tmdb_logo.svg";
-
-interface Props {}
 
 const Movie = () => {
   const navigate = useNavigate();
@@ -39,6 +35,7 @@ const Movie = () => {
         {movie.backdrop_path && (
           <img
             className={styles.backdrop}
+            alt={`Backdrop for ${movie.title}`}
             src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
           />
         )}
@@ -74,7 +71,7 @@ const Movie = () => {
                   movie.title
                 )}`}
               >
-                <img src={tmdbLogo} />
+                <img src={tmdbLogo} alt="The Movie DB" />
               </a>
             </div>
           </div>
