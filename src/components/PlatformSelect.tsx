@@ -32,8 +32,6 @@ const PlatformSelect = ({ movieId }: Props) => {
     })();
   }, []);
 
-  console.log(watchProviders);
-
   const chooseCountry = (e: ChangeEvent<HTMLSelectElement>) => {
     setChoosenCountry(e.target.value);
     console.log(e.target.value);

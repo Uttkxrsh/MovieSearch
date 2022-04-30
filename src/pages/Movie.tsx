@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 import NotFound from "./NotFound";
 import styles from "../style/MoviePage.module.scss";
@@ -15,6 +15,7 @@ import tmdbLogo from "../assets/tmdb_logo.svg";
 interface Props {}
 
 const Movie = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   //Use prop to fetch movie?
   const [loading, setLoading] = useState<boolean>(true);
@@ -44,9 +45,9 @@ const Movie = () => {
       </div>
       <div className={styles.main}>
         <div>
-          <Link to="/" className={styles.back}>
+          <p className={styles.back} onClick={() => navigate(-1)}>
             {"< Back"}
-          </Link>
+          </p>
           <h1>{movie.title}</h1>
           <div className={styles.movieMeta}>
             <p>{new Date(movie.release_date).getFullYear()}</p>
