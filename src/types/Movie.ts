@@ -6,6 +6,7 @@ export default interface Movie {
   genres: Array<{ id: number; name: string }>;
   overview: string | null;
   vote_average: number;
+  runtime: number | null;
   [key: string]:
     | Array<number>
     | Array<object>

@@ -21,6 +21,13 @@ const Movie = () => {
     setLoading(false);
   }, [movie]);
 
+  const formatTime = (mins: number): string => {
+    let h = Math.floor(mins / 60);
+    let m = mins % 60;
+    const paddedM = m < 10 ? "0" + m : m;
+    return `${h}h${paddedM}m`;
+  };
+
   if (loading) return <h1>Loading</h1>;
 
   if (notFound || !movie) return <NotFound />;
@@ -48,6 +55,12 @@ const Movie = () => {
           <h1>{movie.title}</h1>
           <div className={styles.movieMeta}>
             <p>{new Date(movie.release_date).getFullYear()}</p>
+            {movie.runtime && (
+              <>
+                <GoPrimitiveDot size="12px" />
+                <p>{formatTime(movie.runtime)}</p>
+              </>
+            )}
             <GoPrimitiveDot size="12px" />
             <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
           </div>

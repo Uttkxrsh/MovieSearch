@@ -21,12 +21,6 @@ const PlatformSelect = ({ movieId }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (choosenCountry != null) {
-      window.localStorage.setItem("country", choosenCountry);
-    }
-  }, [choosenCountry]);
-
-  useEffect(() => {
     (async () => {
       const watchProvidersRequest = await fetch(
         urlBuilder(`/movie/${movieId}/watch/providers`)
@@ -37,10 +31,9 @@ const PlatformSelect = ({ movieId }: Props) => {
       if (watchProvidersRequest.ok) {
         setWatchProviders(sortWatchProviders(watchProviders.results));
       }
-
-      setLoading(false);
-      setChoosenCountry(window.localStorage.getItem("country"));
     })();
+
+    setLoading(false);
   }, []);
 
   const chooseCountry = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -49,21 +42,19 @@ const PlatformSelect = ({ movieId }: Props) => {
 
   if (loading) return <h1>Loading...</h1>;
 
+  console.log(watchProviders, window.localStorage.getItem("country"));
+
   return (
     <div className={styles.watchSelector}>
       <div className={styles.countrySelector}>
         <label htmlFor="country">Select country</label>
-        <select
-          id="country"
-          onChange={chooseCountry}
-          value={choosenCountry ?? "default"}
-        >
+        <select id="country" onChange={chooseCountry} value={"default"}>
           <option disabled value={"default"}>
             Select country
           </option>
           {Object.keys(watchProviders).map((country) => (
             <option key={country} value={country}>
-              {translateCountryCode(country) ?? "onknown"}
+              {translateCountryCode(country) ?? "unknown"}
             </option>
           ))}
         </select>
