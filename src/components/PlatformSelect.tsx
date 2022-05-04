@@ -42,8 +42,6 @@ const PlatformSelect = ({ movieId }: Props) => {
 
   if (loading) return <h1>Loading...</h1>;
 
-  console.log(watchProviders, window.localStorage.getItem("country"));
-
   return (
     <div className={styles.watchSelector}>
       <div className={styles.countrySelector}>
