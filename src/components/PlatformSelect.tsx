@@ -1,4 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import useAppDispatch from "../hooks/useAppDispatch";
+import useAppSelector from "../hooks/useAppSelector";
+import { setCountry } from "../store/CountryReducer";
 import styles from "../style/PlatformSelect.module.scss";
 import WatchProviderObject from "../types/WatchProviderObject";
 import sortWatchProviders from "../utils/sortWatchProviders";
@@ -19,6 +22,8 @@ const PlatformSelect = ({ movieId }: Props) => {
   const [watchProviders, setWatchProviders] = useState<WatchProviderObject>({});
   const [choosenCountry, setChoosenCountry] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const savedCountry = useAppSelector((state) => state.country.id);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     (async () => {
@@ -31,6 +36,10 @@ const PlatformSelect = ({ movieId }: Props) => {
       if (watchProvidersRequest.ok) {
         setWatchProviders(sortWatchProviders(watchProviders.results));
       }
+
+      if (savedCountry) {
+        setChoosenCountry(savedCountry);
+      }
     })();
 
     setLoading(false);
@@ -38,6 +47,7 @@ const PlatformSelect = ({ movieId }: Props) => {
 
   const chooseCountry = (e: ChangeEvent<HTMLSelectElement>) => {
     setChoosenCountry(e.target.value);
+    dispatch(setCountry(e.target.value));
   };
 
   if (loading) return <h1>Loading...</h1>;
@@ -46,7 +56,11 @@ const PlatformSelect = ({ movieId }: Props) => {
     <div className={styles.watchSelector}>
       <div className={styles.countrySelector}>
         <label htmlFor="country">Select country</label>
-        <select id="country" onChange={chooseCountry} value={"default"}>
+        <select
+          id="country"
+          onChange={chooseCountry}
+          value={choosenCountry ?? "default"}
+        >
           <option disabled value={"default"}>
             Select country
           </option>
