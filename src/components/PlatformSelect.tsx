@@ -37,7 +37,7 @@ const PlatformSelect = ({ movieId }: Props) => {
         setWatchProviders(sortWatchProviders(watchProviders.results));
       }
 
-      if (savedCountry) {
+      if (savedCountry && watchProviders.results[savedCountry]) {
         setChoosenCountry(savedCountry);
       }
     })();
