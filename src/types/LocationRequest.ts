@@ -1,6 +1,5 @@
 interface LocationRequest {
-  status: string;
-  countryCode: string;
+  country_code: string;
 }
 
 export default LocationRequest;
