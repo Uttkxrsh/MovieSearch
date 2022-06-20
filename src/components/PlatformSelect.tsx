@@ -23,6 +23,7 @@ const PlatformSelect = ({ movieId }: Props) => {
   const [choosenCountry, setChoosenCountry] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const savedCountry = useAppSelector((state) => state.country.id);
+  const ipLocation = useAppSelector((state) => state.country.ipLocation);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -39,6 +40,8 @@ const PlatformSelect = ({ movieId }: Props) => {
 
       if (savedCountry && watchProviders.results[savedCountry]) {
         setChoosenCountry(savedCountry);
+      } else if (ipLocation && watchProviders.results[ipLocation]) {
+        setChoosenCountry(ipLocation);
       }
     })();
 

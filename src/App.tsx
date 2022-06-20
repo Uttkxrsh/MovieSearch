@@ -4,10 +4,33 @@ import NotFound from "./pages/NotFound";
 import Movie from "./pages/Movie";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import useAppSelector from "./hooks/useAppSelector";
+import useAppDispatch from "./hooks/useAppDispatch";
+import { setIpLocation } from "./store/CountryReducer";
+import LocationRequest from "./types/LocationRequest";
 
 function App() {
+  const countryData = useAppSelector((state) => state.country);
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    document.title = "Where to watch?";
+    (async () => {
+      document.title = "Where to watch?";
+
+      if (!countryData.ipLocation) {
+        const locationRequest = await fetch(
+          "http://ip-api.com/json?fields=status,countryCode"
+        );
+
+        if (!locationRequest.ok) return;
+
+        const locationData: LocationRequest = await locationRequest.json();
+
+        if (locationData.status !== "success") return;
+
+        dispatch(setIpLocation(locationData.countryCode));
+      }
+    })();
   }, []);
 
   return (
