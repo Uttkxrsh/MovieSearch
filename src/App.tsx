@@ -18,17 +18,13 @@ function App() {
       document.title = "Where to watch?";
 
       if (!countryData.ipLocation) {
-        const locationRequest = await fetch(
-          "http://ip-api.com/json?fields=status,countryCode"
-        );
+        const locationRequest = await fetch("https://geolocation-db.com/json/");
 
         if (!locationRequest.ok) return;
 
         const locationData: LocationRequest = await locationRequest.json();
 
-        if (locationData.status !== "success") return;
-
-        dispatch(setIpLocation(locationData.countryCode));
+        dispatch(setIpLocation(locationData.country_code));
       }
     })();
   }, []);
