@@ -1,4 +1,4 @@
-const urlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
+const apiUrlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
   if (endpoint.startsWith("/")) {
     endpoint.slice(1);
   }
@@ -13,7 +13,7 @@ const urlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
     }
   }
 
-  return `${process.env.APP_URL}${endpoint}?${queryItems.toString()}`;
+  return `https://api.themoviedb.org/3/${endpoint}?${queryItems.toString()}`;
 };
 
-export default urlBuilder;
+export default apiUrlBuilder;

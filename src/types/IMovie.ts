@@ -1,3 +1,5 @@
+import IWatchProviders from "./IWatchProviders";
+
 export default interface IMovie {
   adult: boolean;
   backdrop_path: string | null;
@@ -44,4 +46,5 @@ export default interface IMovie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  "watch/providers": IWatchProviders;
 }

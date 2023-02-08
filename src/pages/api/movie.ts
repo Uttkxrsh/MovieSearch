@@ -1,28 +1,27 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import ISearchResult from "@/types/ISearchResult";
+import IMovie from "@/types/IMovie";
 import apiUrlBuilder from "@/utils/apiUrlBuilder";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (
   req: NextApiRequest,
-  res: NextApiResponse<ISearchResult | null>
+  res: NextApiResponse<IMovie | null>
 ) => {
-  if (!req.query.q || typeof req.query.q !== "string") {
+  if (!req.query.id || typeof req.query.id !== "string") {
     return res.status(400);
   }
 
-  const { q } = req.query;
+  const { id } = req.query;
 
   const request = await fetch(
-    apiUrlBuilder("/search/multi", {
-      query: q,
+    apiUrlBuilder(`/movie/${id}`, {
       language: "en-US",
-      include_adult: true,
+      append_to_response: "watch/providers",
     })
   );
 
   if (!request.ok) {
-    return res.status(500).json(null);
+    return res.status(404).json(null);
   }
 
   const result = await request.json();
