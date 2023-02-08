@@ -1,4 +1,4 @@
-import IWatchProvider from "./IWatchProvivider";
+import IWatchProvider from "./IWatchProvider";
 
 export default interface IWatchProviders {
   results: {

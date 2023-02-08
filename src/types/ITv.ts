@@ -1,3 +1,5 @@
+import IWatchProviders from "./IWatchProviders";
+
 export default interface ITv {
   backdrop_path: string | null;
   created_by: {
@@ -75,4 +77,5 @@ export default interface ITv {
   type: string;
   vote_average: number;
   vote_count: number;
+  "watch/providers": IWatchProviders;
 }

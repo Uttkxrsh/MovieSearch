@@ -8,6 +8,7 @@ import { paramCase } from "change-case";
 import tmdbLogo from "@/assets/tmdb_logo.svg";
 import ITv from "@/types/ITv";
 import { notFound } from "next/navigation";
+import WatchProviders from "@/components/WatchProviders";
 
 const getTv = async (id: string): Promise<ITv> => {
   const request = await fetch(urlBuilder(`/api/tv`, { id }));
@@ -75,7 +76,7 @@ const Movie = async ({ params }: IProps) => {
               </a>
             </S.Links>
           </S.MoreInfo>
-          {/* <PlatformSelect movieId={movie.id} /> */}
+          <WatchProviders providers={show["watch/providers"]} />
         </div>
       </S.Main>
     </S.Container>

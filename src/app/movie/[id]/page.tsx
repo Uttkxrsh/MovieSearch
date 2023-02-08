@@ -8,6 +8,7 @@ import { FaImdb } from "react-icons/fa";
 import { paramCase } from "change-case";
 import tmdbLogo from "@/assets/tmdb_logo.svg";
 import { notFound } from "next/navigation";
+import WatchProviders from "@/components/WatchProviders";
 
 const formatTime = (mins: number): string => {
   let h = Math.floor(mins / 60);
@@ -87,7 +88,7 @@ const Movie = async ({ params }: IProps) => {
               </a>
             </S.Links>
           </S.MoreInfo>
-          {/* <PlatformSelect movieId={movie.id} /> */}
+          <WatchProviders providers={movie["watch/providers"]} />
         </div>
       </S.Main>
     </S.Container>
