@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { IBackdropContainer } from "./MoviePage.types";
+import IBackdropContainer from "@/types/IBackdropContainer";
 import { GoPrimitiveDot } from "react-icons/go";
 import Link from "next/link";
 
@@ -18,6 +18,22 @@ export const BackdropContainer = styled.div<IBackdropContainer>`
   @media screen and (max-width: 1023px) {
     position: unset;
   }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.6755077030812324) 0%,
+      rgba(0, 0, 0, 0.7035189075630253) 52%,
+      rgba(0, 0, 0, 0.17130602240896353) 73%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
 `;
 
 export const Backdrop = styled.img`
@@ -29,13 +45,6 @@ export const Backdrop = styled.img`
 `;
 
 export const Main = styled.div`
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.6755077030812324) 0%,
-    rgba(0, 0, 0, 0.7035189075630253) 52%,
-    rgba(0, 0, 0, 0.17130602240896353) 73%,
-    rgba(0, 0, 0, 0) 100%
-  );
   height: 100%;
 
   @media screen and (min-width: 1024px) {

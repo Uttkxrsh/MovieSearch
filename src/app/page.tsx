@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <S.Container>
       <div>
-        <h1>Search for a movie</h1>
+        <h1>Where 2 watch</h1>
         <S.FormContainer>
           <S.InputContainer>
             <input

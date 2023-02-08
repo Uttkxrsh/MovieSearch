@@ -1,5 +1,5 @@
 import { IProps } from "./TvPage.types";
-import * as S from "./TvPage.style";
+import * as S from "@/style/ResultPage";
 import { NextPage } from "next";
 import urlBuilder from "@/utils/urlBuilder";
 import { GoPrimitiveDot } from "react-icons/go";

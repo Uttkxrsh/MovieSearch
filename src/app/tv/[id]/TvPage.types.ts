@@ -3,7 +3,3 @@ export interface IProps {
     id: string;
   };
 }
-
-export interface IBackdropContainer {
-  isBackdrop: boolean;
-}

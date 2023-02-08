@@ -1,5 +1,5 @@
 import { IProps } from "./MoviePage.types";
-import * as S from "./MoviePage.style";
+import * as S from "@/style/ResultPage";
 import { NextPage } from "next";
 import IMovie from "@/types/IMovie";
 import urlBuilder from "@/utils/urlBuilder";
