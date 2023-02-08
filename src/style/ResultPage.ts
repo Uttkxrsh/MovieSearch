@@ -19,20 +19,22 @@ export const BackdropContainer = styled.div<IBackdropContainer>`
     position: unset;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.6755077030812324) 0%,
-      rgba(0, 0, 0, 0.7035189075630253) 52%,
-      rgba(0, 0, 0, 0.17130602240896353) 73%,
-      rgba(0, 0, 0, 0) 100%
-    );
+  @media screen and (min-width: 1024px) {
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.6755077030812324) 0%,
+        rgba(0, 0, 0, 0.7035189075630253) 52%,
+        rgba(0, 0, 0, 0.17130602240896353) 73%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
   }
 `;
 

@@ -8,6 +8,7 @@ import { IoMdStar } from "react-icons/io";
 import { FaImdb } from "react-icons/fa";
 import { paramCase } from "change-case";
 import tmdbLogo from "@/assets/tmdb_logo.svg";
+import { notFound } from "next/navigation";
 
 const formatTime = (mins: number): string => {
   let h = Math.floor(mins / 60);
@@ -20,11 +21,11 @@ const getMovie = async (id: string): Promise<IMovie> => {
   const request = await fetch(urlBuilder(`/api/movie`, { id }));
 
   if (request.status === 404) {
-    throw new Error("404 Movie not found");
+    notFound();
   }
 
   if (!request.ok) {
-    throw new Error("Something went wrong");
+    throw new Error("500 Something went wrong");
   }
 
   const result = await request.json();

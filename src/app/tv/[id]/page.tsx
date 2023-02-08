@@ -7,12 +7,13 @@ import { IoMdStar } from "react-icons/io";
 import { paramCase } from "change-case";
 import tmdbLogo from "@/assets/tmdb_logo.svg";
 import ITv from "@/types/ITv";
+import { notFound } from "next/navigation";
 
 const getTv = async (id: string): Promise<ITv> => {
   const request = await fetch(urlBuilder(`/api/tv`, { id }));
 
   if (request.status === 404) {
-    throw new Error("404 TV Show not found");
+    notFound();
   }
 
   if (!request.ok) {

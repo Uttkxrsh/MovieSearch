@@ -25,7 +25,6 @@ const Home = () => {
 
       const results = await search(query);
 
-      console.log({ results });
       if (results) {
         setSearchResults(results);
       }
