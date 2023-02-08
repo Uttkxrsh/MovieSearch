@@ -1,91 +1,87 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
+import search from "@/lib/search";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { KeyboardEvent, useEffect, useState } from "react";
+import { IoClose } from "react-icons/io5";
+import { AiOutlineSearch } from "react-icons/ai";
+import * as S from "./Home.style";
 
-export default function Home() {
+const Home = () => {
+  const router = useRouter();
+  const [query, setQuery] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<any[]>();
+
+  useEffect(() => {
+    (async () => {
+      if (query.trim().length < 3) {
+        setSearchResults([]);
+        return;
+      }
+
+      const results = await search(query);
+
+      if (results) {
+        setSearchResults(results);
+      }
+    })();
+  }, [query]);
+
+  const handleInputSubmit = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      router.push(`/search/${query}`);
+    }
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <S.Container>
+      <div>
+        <h1>Search for a movie</h1>
+        <S.FormContainer>
+          <S.InputContainer>
+            <input
+              type="text"
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleInputSubmit}
+              value={query}
             />
-          </a>
-        </div>
+            <div>
+              {query.length > 0 && (
+                <IoClose
+                  size="24px"
+                  color="white"
+                  onClick={() => setQuery("")}
+                />
+              )}
+              <AiOutlineSearch
+                size="26px"
+                color="#ffffff"
+                onClick={() => router.push(`/search/${query}`)}
+              />
+            </div>
+          </S.InputContainer>
+          {searchResults && (
+            <S.SearchResults>
+              {/* {searchResults.map((movie: MovieType) => (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  poster_path={movie.poster_path}
+                />
+              ))} */}
+              {searchResults.length > 0 && (
+                <S.MoreContainer>
+                  <Link href={`/search/${query}`}>More results</Link>
+                </S.MoreContainer>
+              )}
+            </S.SearchResults>
+          )}
+        </S.FormContainer>
       </div>
+    </S.Container>
+  );
+};
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Home;
