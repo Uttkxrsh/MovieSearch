@@ -25,8 +25,7 @@ const getTv = async (id: string): Promise<ITv> => {
   return result;
 };
 
-/* @ts-expect-error Server Component */
-const Movie: NextPage<IProps> = async ({ params }) => {
+const Movie = async ({ params }: IProps) => {
   const { id } = params;
   const show = await getTv(id);
 

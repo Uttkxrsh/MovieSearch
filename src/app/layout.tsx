@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/Footer";
 import GlobalStyles from "@/lib/GlobalStyles";
 import StyledComponentsRegistry from "@/lib/registry";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <GlobalStyles />
           {children}
+          <Footer />
         </StyledComponentsRegistry>
       </body>
     </html>

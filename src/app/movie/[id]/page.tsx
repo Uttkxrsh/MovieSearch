@@ -1,6 +1,5 @@
 import { IProps } from "./MoviePage.types";
 import * as S from "@/style/ResultPage";
-import { NextPage } from "next";
 import IMovie from "@/types/IMovie";
 import urlBuilder from "@/utils/urlBuilder";
 import { GoPrimitiveDot } from "react-icons/go";
@@ -33,8 +32,7 @@ const getMovie = async (id: string): Promise<IMovie> => {
   return result;
 };
 
-/* @ts-expect-error Server Component */
-const Movie: NextPage<IProps> = async ({ params }) => {
+const Movie = async ({ params }: IProps) => {
   const { id } = params;
   const movie = await getMovie(id);
 
