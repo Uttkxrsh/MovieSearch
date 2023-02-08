@@ -1,9 +1,8 @@
-import IMovieSearchResult from "./IMovieSearchResult";
-import ITvSearchResult from "./ITvSearchResult";
+import ISearchResultItem from "./ISearchResultItem";
 
 export default interface ISearchResult {
   page: number;
-  result: (IMovieSearchResult | ITvSearchResult)[];
+  result: ISearchResultItem[];
   total_results: number;
   total_pages: number;
 }

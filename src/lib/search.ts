@@ -1,12 +1,16 @@
-const search = async (query: string) => {
+import ISearchResult from "@/types/ISearchResult";
+import ISearchResultItem from "@/types/ISearchResultItem";
+
+const search = async (query: string): Promise<ISearchResultItem[] | null> => {
   const request = await fetch(`/api/search?q=${query}`);
 
   if (!request.ok) {
     return null;
   }
 
-  const result = await request.json();
-  return result;
+  const { results } = await request.json();
+
+  return results;
 };
 
 export default search;

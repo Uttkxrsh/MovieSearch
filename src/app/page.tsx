@@ -7,11 +7,14 @@ import { KeyboardEvent, useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { AiOutlineSearch } from "react-icons/ai";
 import * as S from "./Home.style";
+import ISearchResultItem from "@/types/ISearchResultItem";
+import SearchResult from "@/components/SearchResult";
+import isMovie from "@/utils/isMovieSearchResult";
 
 const Home = () => {
   const router = useRouter();
   const [query, setQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<any[]>();
+  const [searchResults, setSearchResults] = useState<ISearchResultItem[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -22,6 +25,7 @@ const Home = () => {
 
       const results = await search(query);
 
+      console.log({ results });
       if (results) {
         setSearchResults(results);
       }
@@ -63,15 +67,32 @@ const Home = () => {
           </S.InputContainer>
           {searchResults && (
             <S.SearchResults>
-              {/* {searchResults.map((movie: MovieType) => (
-                <Movie
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  poster_path={movie.poster_path}
-                />
-              ))} */}
-              {searchResults.length > 0 && (
+              {JSON.parse(JSON.stringify(searchResults))
+                .slice(0, 3)
+                .map((result: ISearchResultItem) => {
+                  if (isMovie(result)) {
+                    return (
+                      <SearchResult
+                        isMovie
+                        key={result.id}
+                        id={result.id}
+                        posterPath={result.poster_path}
+                        title={result.title}
+                      />
+                    );
+                  }
+
+                  return (
+                    <SearchResult
+                      isTv
+                      key={result.id}
+                      id={result.id}
+                      posterPath={result.poster_path}
+                      title={result.name}
+                    />
+                  );
+                })}
+              {searchResults.length > 3 && (
                 <S.MoreContainer>
                   <Link href={`/search/${query}`}>More results</Link>
                 </S.MoreContainer>
