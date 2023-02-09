@@ -3,12 +3,17 @@
 import Footer from "@/components/Footer";
 import GlobalStyles from "@/lib/GlobalStyles";
 import StyledComponentsRegistry from "@/lib/registry";
+import CountryContext from "@/context/CountryContext";
+import { useEffect, useState } from "react";
+import useCountry from "@/hooks/useCountry";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const country = useCountry();
+
   return (
     <html lang="en">
       {/*
@@ -19,7 +24,9 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyles />
-          {children}
+          <CountryContext.Provider value={country}>
+            {children}
+          </CountryContext.Provider>
           <Footer />
         </StyledComponentsRegistry>
       </body>

@@ -4,6 +4,8 @@ import urlBuilder from "@/utils/urlBuilder";
 import ISearchResultItem from "@/types/ISearchResultItem";
 import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";
+import { useContext } from "react";
+import CountryContext from "@/context/CountryContext";
 
 const getSearchResults = async (
   query: string

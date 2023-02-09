@@ -1,18 +1,26 @@
 "use client";
 
 import translateCountryCode from "@/utils/translateCountryCode";
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useContext, useEffect, useState } from "react";
 import { IProps } from "./WatchProviders.types";
 import WatchProvider from "@/components/WatchProvider";
 import * as S from "./WatchProviders.style";
+import CountryContext from "@/context/CountryContext";
 
 const WatchProviders: FC<IProps> = ({ providers }) => {
   const { results } = providers;
+  const country = useContext(CountryContext);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
 
   const selectCountry = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountry(e.target.value);
   };
+
+  useEffect(() => {
+    if (country !== null && results[country]) {
+      setSelectedCountry(country);
+    }
+  }, [country]);
 
   return (
     <S.Container>
