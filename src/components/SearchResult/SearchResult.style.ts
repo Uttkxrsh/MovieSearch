@@ -34,6 +34,10 @@ export const WrapperLink = styled(Link)`
 `;
 
 export const ImageWrapper = styled.div`
+  min-width: 75px;
   width: 75px;
+  max-width: 75px;
+  min-height: 113px;
   height: 113px;
+  max-height: 113px;
 `;

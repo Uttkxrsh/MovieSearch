@@ -8,7 +8,7 @@ const search = async (query: string): Promise<ISearchResultItem[] | null> => {
     return null;
   }
 
-  const { results } = await request.json();
+  const results = await request.json();
 
   return results;
 };

@@ -45,7 +45,7 @@ export const Placeholder = styled.div<ILoadingProps>`
 export const Skeleton = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 2px;
   position: relative;
   background: rgba(255, 255, 255, 0.5);
   overflow: hidden;

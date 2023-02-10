@@ -1,6 +1,6 @@
 const apiUrlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
   if (endpoint.startsWith("/")) {
-    endpoint.slice(1);
+    endpoint = endpoint.slice(1);
   }
 
   const queryItems = new URLSearchParams({

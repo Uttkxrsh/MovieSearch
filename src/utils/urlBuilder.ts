@@ -2,7 +2,7 @@ import { APP_URL } from "@/lib/constants";
 
 const urlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
   if (endpoint.startsWith("/")) {
-    endpoint.slice(1);
+    endpoint = endpoint.slice(1);
   }
 
   const queryItems = new URLSearchParams({});

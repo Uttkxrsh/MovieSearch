@@ -6,10 +6,9 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
 import { FaImdb } from "react-icons/fa";
 import { paramCase } from "change-case";
-import tmdbLogo from "@/assets/tmdb_logo.svg";
 import { notFound } from "next/navigation";
 import WatchProviders from "@/components/WatchProviders";
-import Image from "@/components/Image";
+import TmdbLogo from "@/components/Icons/TmdbLogo";
 
 const formatTime = (mins: number): string => {
   let h = Math.floor(mins / 60);
@@ -87,12 +86,7 @@ const Movie = async ({ params }: IProps) => {
                   movie.title
                 )}`}
               >
-                <Image
-                  src={tmdbLogo.src}
-                  alt="The Movie DB"
-                  w="32px"
-                  h="32px"
-                />
+                <TmdbLogo />
               </a>
             </S.Links>
           </S.MoreInfo>

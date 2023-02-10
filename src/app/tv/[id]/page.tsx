@@ -5,13 +5,17 @@ import urlBuilder from "@/utils/urlBuilder";
 import { GoPrimitiveDot } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
 import { paramCase } from "change-case";
-import tmdbLogo from "@/assets/tmdb_logo.svg";
 import ITv from "@/types/ITv";
 import { notFound } from "next/navigation";
 import WatchProviders from "@/components/WatchProviders";
+import TmdbLogo from "@/components/Icons/TmdbLogo";
 
 const getTv = async (id: string): Promise<ITv> => {
-  const request = await fetch(urlBuilder(`/api/tv`, { id }), { cache: 'no-store' });
+  const request = await fetch(urlBuilder(`/api/tv`, { id }), {
+    cache: "no-store",
+  });
+
+  console.log(await request.json());
 
   if (request.status === 404) {
     notFound();
@@ -72,7 +76,7 @@ const Movie = async ({ params }: IProps) => {
                   show.name
                 )}`}
               >
-                <img src={tmdbLogo.src} alt="The Movie DB" />
+                <TmdbLogo />
               </a>
             </S.Links>
           </S.MoreInfo>

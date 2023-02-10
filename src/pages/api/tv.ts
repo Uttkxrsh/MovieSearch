@@ -13,6 +13,13 @@ const handler = async (
 
   const { id } = req.query;
 
+  console.log(
+    apiUrlBuilder(`/tv/${id}`, {
+      language: "en-US",
+      append_to_response: "watch/providers",
+    })
+  );
+
   const request = await fetch(
     apiUrlBuilder(`/tv/${id}`, {
       language: "en-US",

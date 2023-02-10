@@ -17,7 +17,7 @@ const handler = async (
     apiUrlBuilder("/search/multi", {
       query: q,
       language: "en-US",
-      include_adult: true,
+      include_adult: false,
     })
   );
 
@@ -27,7 +27,11 @@ const handler = async (
 
   const result = await request.json();
 
-  return res.json(result);
+  return res.json(
+    result.results.filter(
+      (item: { media_type: string }) => item.media_type !== "person"
+    )
+  );
 };
 
 export default handler;
