@@ -3,6 +3,7 @@
 import { FC, useState } from "react";
 import { IProps } from "./WatchProvider.types";
 import * as S from "./WatchProvider.style";
+import Image from "@/components/Image";
 
 const WatchProvider: FC<IProps> = ({ name, logo }) => {
   const [tooltip, showTooltip] = useState(false);
@@ -14,7 +15,12 @@ const WatchProvider: FC<IProps> = ({ name, logo }) => {
         onMouseEnter={() => showTooltip(true)}
         onMouseLeave={() => showTooltip(false)}
       >
-        <img alt={name} src={`https://image.tmdb.org/t/p/w45${logo}`} />
+        <Image
+          alt={name}
+          src={`https://image.tmdb.org/t/p/w45${logo}`}
+          w="45px"
+          h="45px"
+        />
       </div>
     </S.Provider>
   );

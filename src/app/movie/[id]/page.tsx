@@ -9,6 +9,7 @@ import { paramCase } from "change-case";
 import tmdbLogo from "@/assets/tmdb_logo.svg";
 import { notFound } from "next/navigation";
 import WatchProviders from "@/components/WatchProviders";
+import Image from "@/components/Image";
 
 const formatTime = (mins: number): string => {
   let h = Math.floor(mins / 60);
@@ -86,7 +87,12 @@ const Movie = async ({ params }: IProps) => {
                   movie.title
                 )}`}
               >
-                <img src={tmdbLogo.src} alt="The Movie DB" />
+                <Image
+                  src={tmdbLogo.src}
+                  alt="The Movie DB"
+                  w="32px"
+                  h="32px"
+                />
               </a>
             </S.Links>
           </S.MoreInfo>
