@@ -6,6 +6,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import CountryContext from "@/context/CountryContext";
 import { useEffect, useState } from "react";
 import useCountry from "@/hooks/useCountry";
+import Tracking from "@/components/Tracking";
 
 export default function RootLayout({
   children,
@@ -23,6 +24,7 @@ export default function RootLayout({
       <head />
       <body>
         <StyledComponentsRegistry>
+          <Tracking />
           <GlobalStyles />
           <CountryContext.Provider value={country}>
             {children}
