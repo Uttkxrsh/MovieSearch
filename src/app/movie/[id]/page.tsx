@@ -18,7 +18,9 @@ const formatTime = (mins: number): string => {
 };
 
 const getMovie = async (id: string): Promise<IMovie> => {
-  const request = await fetch(urlBuilder(`/api/movie`, { id }));
+  const request = await fetch(urlBuilder(`/api/movie`, { id }), {
+    cache: "no-store",
+  });
 
   if (request.status === 404) {
     notFound();

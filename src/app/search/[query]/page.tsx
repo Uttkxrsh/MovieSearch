@@ -10,7 +10,9 @@ import CountryContext from "@/context/CountryContext";
 const getSearchResults = async (
   query: string
 ): Promise<ISearchResultItem[]> => {
-  const request = await fetch(urlBuilder("/api/search", { q: query }));
+  const request = await fetch(urlBuilder("/api/search", { q: query }), {
+    cache: "no-store",
+  });
 
   if (!request.ok) {
     return [];

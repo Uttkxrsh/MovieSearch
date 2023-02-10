@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 import WatchProviders from "@/components/WatchProviders";
 
 const getTv = async (id: string): Promise<ITv> => {
-  const request = await fetch(urlBuilder(`/api/tv`, { id }));
+  const request = await fetch(urlBuilder(`/api/tv`, { id }), { cache: 'no-store' });
 
   if (request.status === 404) {
     notFound();
