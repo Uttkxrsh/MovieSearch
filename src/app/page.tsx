@@ -10,11 +10,14 @@ import * as S from "./Home.style";
 import ISearchResultItem from "@/types/ISearchResultItem";
 import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";
+import { APP_URL } from "@/lib/constants";
 
 const Home = () => {
   const router = useRouter();
   const [query, setQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<ISearchResultItem[]>([]);
+
+  console.log({ APP_URL });
 
   useEffect(() => {
     (async () => {
