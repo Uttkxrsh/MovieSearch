@@ -15,8 +15,6 @@ const getTv = async (id: string): Promise<ITv> => {
     cache: "no-store",
   });
 
-  console.log(await request.json());
-
   if (request.status === 404) {
     notFound();
   }

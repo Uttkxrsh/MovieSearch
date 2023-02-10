@@ -17,8 +17,6 @@ const Home = () => {
   const [query, setQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<ISearchResultItem[]>([]);
 
-  console.log({ APP_URL });
-
   useEffect(() => {
     (async () => {
       if (query.trim().length < 3) {
