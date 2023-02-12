@@ -51,7 +51,9 @@ const Movie = async ({ params }: IProps) => {
             {show.number_of_seasons && (
               <>
                 <GoPrimitiveDot size="12px" />
-                <p>{show.number_of_seasons} seasons</p>
+                <p>{`${show.number_of_seasons} ${
+                  show.number_of_seasons > 1 ? "seasons" : "season"
+                }`}</p>
               </>
             )}
             {show.genres.length > 0 && (

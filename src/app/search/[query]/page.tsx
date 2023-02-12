@@ -30,10 +30,10 @@ const SearchPage = async ({ params }: IProps) => {
       <div>
         <S.Back href="/">{"< Back"}</S.Back>
         <h1>
-          Found {results.length} movies for: {params.query}
+          Found {results ? results.length : 0} movies for: {params.query}
         </h1>
         <S.Results>
-          {results.map((result) => {
+          {(results ?? []).map((result) => {
             if (isMovie(result)) {
               return (
                 <SearchResult

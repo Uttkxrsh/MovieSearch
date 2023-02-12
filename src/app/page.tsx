@@ -3,33 +3,44 @@
 import search from "@/lib/search";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { KeyboardEvent, useEffect, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { AiOutlineSearch } from "react-icons/ai";
 import * as S from "./Home.style";
 import ISearchResultItem from "@/types/ISearchResultItem";
 import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";
-import { APP_URL } from "@/lib/constants";
+import { APP_TITLE } from "@/lib/constants";
+import { debounce } from "lodash";
 
 const Home = () => {
   const router = useRouter();
   const [query, setQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<ISearchResultItem[]>([]);
 
-  useEffect(() => {
-    (async () => {
-      if (query.trim().length < 3) {
+  const handleSearch = useRef(
+    debounce(async (q) => {
+      if (q.trim() === "") {
         setSearchResults([]);
         return;
       }
 
-      const results = await search(query);
+      const results = await search(q);
+
+      console.log({ results });
 
       if (results) {
         setSearchResults(results);
       }
-    })();
+    }, 300)
+  ).current;
+
+  useEffect(() => {
+    handleSearch(query);
+
+    return () => {
+      handleSearch.cancel();
+    };
   }, [query]);
 
   const handleInputSubmit = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -41,7 +52,8 @@ const Home = () => {
   return (
     <S.Container>
       <div>
-        <h1>Where 2 watch</h1>
+        <h1>{APP_TITLE}</h1>
+        <h2>Query: {query}</h2>
         <S.FormContainer>
           <S.InputContainer>
             <input
