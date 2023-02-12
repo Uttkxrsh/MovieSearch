@@ -11,7 +11,7 @@ import ISearchResultItem from "@/types/ISearchResultItem";
 import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";
 import { APP_TITLE } from "@/lib/constants";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 
 const Home = () => {
   const router = useRouter();
