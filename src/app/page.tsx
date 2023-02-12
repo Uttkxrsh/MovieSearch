@@ -53,7 +53,6 @@ const Home = () => {
     <S.Container>
       <div>
         <h1>{APP_TITLE}</h1>
-        <h2>Query: {query}</h2>
         <S.FormContainer>
           <S.InputContainer>
             <input
