@@ -12,6 +12,7 @@ import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";
 import { APP_TITLE } from "@/lib/constants";
 import debounce from "lodash/debounce";
+import PageMeta from "@/components/Meta/PageMeta";
 
 const Home = () => {
   const router = useRouter();
@@ -51,6 +52,7 @@ const Home = () => {
 
   return (
     <>
+      <PageMeta />
       <S.Container>
         <div>
           <h1>{APP_TITLE}</h1>

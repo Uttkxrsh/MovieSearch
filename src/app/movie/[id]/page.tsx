@@ -9,6 +9,7 @@ import { paramCase } from "change-case";
 import { notFound } from "next/navigation";
 import WatchProviders from "@/components/WatchProviders";
 import TmdbLogo from "@/components/Icons/TmdbLogo";
+import ResultMeta from "@/components/Meta/ResultMeta";
 
 const formatTime = (mins: number): string => {
   let h = Math.floor(mins / 60);
@@ -41,6 +42,12 @@ const Movie = async ({ params }: IProps) => {
 
   return (
     <>
+      <ResultMeta
+        type="tv"
+        title={movie.title}
+        image={movie.backdrop_path}
+        id={`${movie.id}`}
+      />
       <S.Container>
         <S.BackdropContainer isBackdrop={!!movie.backdrop_path}>
           {movie.backdrop_path && (

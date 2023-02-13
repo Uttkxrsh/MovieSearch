@@ -34,7 +34,12 @@ const Movie = async ({ params }: IProps) => {
 
   return (
     <>
-      <ResultMeta image={show.backdrop_path} title={show.name} type="tv" />
+      <ResultMeta
+        type="tv"
+        title={show.name}
+        image={show.backdrop_path}
+        id={`${show.id}`}
+      />
       <S.Container>
         <S.BackdropContainer isBackdrop={!!show.backdrop_path}>
           {show.backdrop_path && (
