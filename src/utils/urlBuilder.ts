@@ -13,6 +13,10 @@ const urlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
     }
   }
 
+  console.log({ APP_URL });
+
+  console.log(`${APP_URL}${endpoint}?${queryItems.toString()}`);
+
   return `${APP_URL}${endpoint}?${queryItems.toString()}`;
 };
 
