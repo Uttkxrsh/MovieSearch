@@ -4,8 +4,6 @@ import urlBuilder from "@/utils/urlBuilder";
 import ISearchResultItem from "@/types/ISearchResultItem";
 import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";
-import PageMeta from "@/components/Meta/PageMeta";
-import { APP_TITLE } from "@/lib/constants";
 
 const getSearchResults = async (
   query: string
@@ -22,12 +20,12 @@ const getSearchResults = async (
   return result.results;
 };
 
+// TODO: Search not working
 const SearchPage = async ({ params }: IProps) => {
   const results = await getSearchResults(params.query);
 
   return (
     <>
-      <PageMeta title={`Search result for '${params.query}' - ${APP_TITLE}`} />
       <S.Container>
         <div>
           <S.Back href="/">{"< Back"}</S.Back>
