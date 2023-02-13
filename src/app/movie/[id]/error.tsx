@@ -2,7 +2,7 @@
 
 const MovieError = ({ error }: { error: any }) => {
   console.log({ error });
-  console.log(process.env);
+  console.log("process", process.env);
 
   return null;
 };
