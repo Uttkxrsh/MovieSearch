@@ -12,6 +12,7 @@ import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";
 import { APP_TITLE } from "@/lib/constants";
 import debounce from "lodash/debounce";
+import PageMeta from "@/components/Meta/PageMeta";
 
 const Home = () => {
   const router = useRouter();
@@ -50,69 +51,72 @@ const Home = () => {
   };
 
   return (
-    <S.Container>
-      <div>
-        <h1>{APP_TITLE}</h1>
-        <S.FormContainer>
-          <S.InputContainer>
-            <input
-              type="text"
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleInputSubmit}
-              value={query}
-            />
-            <div>
-              {query.length > 0 && (
-                <IoClose
-                  size="24px"
-                  color="white"
-                  onClick={() => setQuery("")}
-                />
-              )}
-              <AiOutlineSearch
-                size="26px"
-                color="#ffffff"
-                onClick={() => router.push(`/search/${query}`)}
+    <>
+      <PageMeta />
+      <S.Container>
+        <div>
+          <h1>{APP_TITLE}</h1>
+          <S.FormContainer>
+            <S.InputContainer>
+              <input
+                type="text"
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleInputSubmit}
+                value={query}
               />
-            </div>
-          </S.InputContainer>
-          {searchResults && (
-            <S.SearchResults>
-              {JSON.parse(JSON.stringify(searchResults))
-                .slice(0, 3)
-                .map((result: ISearchResultItem) => {
-                  if (isMovie(result)) {
+              <div>
+                {query.length > 0 && (
+                  <IoClose
+                    size="24px"
+                    color="white"
+                    onClick={() => setQuery("")}
+                  />
+                )}
+                <AiOutlineSearch
+                  size="26px"
+                  color="#ffffff"
+                  onClick={() => router.push(`/search/${query}`)}
+                />
+              </div>
+            </S.InputContainer>
+            {searchResults && (
+              <S.SearchResults>
+                {JSON.parse(JSON.stringify(searchResults))
+                  .slice(0, 3)
+                  .map((result: ISearchResultItem) => {
+                    if (isMovie(result)) {
+                      return (
+                        <SearchResult
+                          isMovie
+                          key={result.id}
+                          id={result.id}
+                          posterPath={result.poster_path}
+                          title={result.title}
+                        />
+                      );
+                    }
+
                     return (
                       <SearchResult
-                        isMovie
+                        isTv
                         key={result.id}
                         id={result.id}
                         posterPath={result.poster_path}
-                        title={result.title}
+                        title={result.name}
                       />
                     );
-                  }
-
-                  return (
-                    <SearchResult
-                      isTv
-                      key={result.id}
-                      id={result.id}
-                      posterPath={result.poster_path}
-                      title={result.name}
-                    />
-                  );
-                })}
-              {searchResults.length > 3 && (
-                <S.MoreContainer>
-                  <Link href={`/search/${query}`}>More results</Link>
-                </S.MoreContainer>
-              )}
-            </S.SearchResults>
-          )}
-        </S.FormContainer>
-      </div>
-    </S.Container>
+                  })}
+                {searchResults.length > 3 && (
+                  <S.MoreContainer>
+                    <Link href={`/search/${query}`}>More results</Link>
+                  </S.MoreContainer>
+                )}
+              </S.SearchResults>
+            )}
+          </S.FormContainer>
+        </div>
+      </S.Container>
+    </>
   );
 };
 

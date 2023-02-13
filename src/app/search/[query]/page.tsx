@@ -4,8 +4,8 @@ import urlBuilder from "@/utils/urlBuilder";
 import ISearchResultItem from "@/types/ISearchResultItem";
 import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";
-import { useContext } from "react";
-import CountryContext from "@/context/CountryContext";
+import PageMeta from "@/components/Meta/PageMeta";
+import { APP_TITLE } from "@/lib/constants";
 
 const getSearchResults = async (
   query: string
@@ -26,39 +26,42 @@ const SearchPage = async ({ params }: IProps) => {
   const results = await getSearchResults(params.query);
 
   return (
-    <S.Container>
-      <div>
-        <S.Back href="/">{"< Back"}</S.Back>
-        <h1>
-          Found {results ? results.length : 0} movies for: {params.query}
-        </h1>
-        <S.Results>
-          {(results ?? []).map((result) => {
-            if (isMovie(result)) {
+    <>
+      <PageMeta title={`Search result for '${params.query}' - ${APP_TITLE}`} />
+      <S.Container>
+        <div>
+          <S.Back href="/">{"< Back"}</S.Back>
+          <h1>
+            Found {results ? results.length : 0} movies for: {params.query}
+          </h1>
+          <S.Results>
+            {(results ?? []).map((result) => {
+              if (isMovie(result)) {
+                return (
+                  <SearchResult
+                    isMovie
+                    key={result.id}
+                    id={result.id}
+                    posterPath={result.poster_path}
+                    title={result.title}
+                  />
+                );
+              }
+
               return (
                 <SearchResult
-                  isMovie
+                  isTv
                   key={result.id}
                   id={result.id}
                   posterPath={result.poster_path}
-                  title={result.title}
+                  title={result.name}
                 />
               );
-            }
-
-            return (
-              <SearchResult
-                isTv
-                key={result.id}
-                id={result.id}
-                posterPath={result.poster_path}
-                title={result.name}
-              />
-            );
-          })}
-        </S.Results>
-      </div>
-    </S.Container>
+            })}
+          </S.Results>
+        </div>
+      </S.Container>
+    </>
   );
 };
 
