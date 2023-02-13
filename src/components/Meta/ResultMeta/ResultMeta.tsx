@@ -7,6 +7,8 @@ import { IProps } from "./ResultMeta.types";
 
 // TODO: Default image
 const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
+  console.log({ title, image, type, id, APP_URL });
+
   return (
     <Helmet>
       <title>{title}</title>
