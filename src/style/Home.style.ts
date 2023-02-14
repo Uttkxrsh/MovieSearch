@@ -13,6 +13,10 @@ export const Container = styled.div`
   }
 `;
 
+export const Label = styled.label`
+  display: none;
+`;
+
 export const FormContainer = styled.div`
   min-width: 570px;
   width: 570px;

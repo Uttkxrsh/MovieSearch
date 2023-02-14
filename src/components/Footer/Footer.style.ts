@@ -35,6 +35,6 @@ export const Small = styled.small`
   }
 
   @media screen and (max-width: 425px) {
-    font-size: 11px;
+    font-size: 12px;
   }
 `;

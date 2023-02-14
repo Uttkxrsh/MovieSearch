@@ -58,8 +58,10 @@ const Home = () => {
           <h1>{APP_TITLE}</h1>
           <S.FormContainer>
             <S.InputContainer>
+              <S.Label htmlFor="query">Search</S.Label>
               <input
                 type="text"
+                id="query"
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleInputSubmit}
                 value={query}
