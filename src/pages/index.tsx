@@ -11,11 +11,13 @@ import isMovie from "@/utils/isMovieSearchResult";
 import { APP_TITLE } from "@/lib/constants";
 import debounce from "lodash/debounce";
 import PageMeta from "@/components/Meta/PageMeta";
+import Loader from "@/components/Icons/Loader";
 
 const Home = () => {
   const router = useRouter();
   const [query, setQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<ISearchResultItem[]>([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   const handleSearch = useRef(
     debounce(async (q) => {
@@ -24,7 +26,9 @@ const Home = () => {
         return;
       }
 
+      setIsFetching(true);
       const results = await search(q);
+      setIsFetching(false);
 
       if (results) {
         setSearchResults(results);
@@ -68,11 +72,15 @@ const Home = () => {
                     onClick={() => setQuery("")}
                   />
                 )}
-                <AiOutlineSearch
-                  size="26px"
-                  color="#ffffff"
-                  onClick={() => router.push(`/search/${query}`)}
-                />
+                {isFetching ? (
+                  <Loader size="16px" />
+                ) : (
+                  <AiOutlineSearch
+                    size="26px"
+                    color="#ffffff"
+                    onClick={() => router.push(`/search/${query}`)}
+                  />
+                )}
               </div>
             </S.InputContainer>
             {searchResults && (
