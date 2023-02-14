@@ -1,29 +1,37 @@
-"use client";
-
 import { APP_URL } from "@/lib/constants";
+import Head from "next/head";
 import { FC } from "react";
-import { Helmet } from "react-helmet";
 import { IProps } from "./ResultMeta.types";
 
 // TODO: Default image
 const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
   return (
-    <Helmet>
-      <title>{title}</title>
-      <meta property="og:title" content={title} />
-      <meta property="twitter:title" content={title} />
+    <Head key="meta">
+      <title key="page_title">{title}</title>
+      <meta property="og:title" content={title} key="og:title" />
+      <meta property="twitter:title" content={title} key="twitter:title" />
 
-      <meta name="description" content={`Find where to watch ${title}`} />
+      <meta
+        name="description"
+        content={`Find where to watch ${title}`}
+        key="description"
+      />
       <meta
         property="twitter:description"
         content={`Find where to watch ${title}`}
+        key="twitter:description"
       />
 
       <meta
         property="og:type"
         content={`video.${type === "movie" ? "movie" : "tv_show"}`}
+        key="og:type"
       />
-      <meta property="twitter:card" content="summary_large_image" />
+      <meta
+        property="twitter:card"
+        content="summary_large_image"
+        key="twitter:card"
+      />
 
       {APP_URL && (
         <meta
@@ -31,6 +39,7 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
           content={`${APP_URL.endsWith("/") ? APP_URL : `${APP_URL}/`}${
             type === "movie" ? "movie" : "tv"
           }/${id}`}
+          key="og:url"
         />
       )}
 
@@ -38,21 +47,31 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
         <meta
           property="og:image"
           content={`https://image.tmdb.org/t/p/original${image}`}
+          key="og:image"
         />
       )}
       {image && (
-        <meta property="og:image:alt" content={`Poster for ${title}`} />
+        <meta
+          property="og:image:alt"
+          content={`Poster for ${title}`}
+          key="og:image:alt"
+        />
       )}
       {image && (
         <meta
           property="twitter:image"
           content={`https://image.tmdb.org/t/p/original${image}`}
+          key="twitter:image"
         />
       )}
       {image && (
-        <meta property="twitter:image:alt" content={`Poster for ${title}`} />
+        <meta
+          property="twitter:image:alt"
+          content={`Poster for ${title}`}
+          key="twitter:image:alt"
+        />
       )}
-    </Helmet>
+    </Head>
   );
 };
 

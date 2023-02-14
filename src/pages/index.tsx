@@ -1,12 +1,10 @@
-"use client";
-
 import search from "@/lib/search";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { AiOutlineSearch } from "react-icons/ai";
-import * as S from "./Home.style";
+import * as S from "@/style/Home.style";
 import ISearchResultItem from "@/types/ISearchResultItem";
 import SearchResult from "@/components/SearchResult";
 import isMovie from "@/utils/isMovieSearchResult";

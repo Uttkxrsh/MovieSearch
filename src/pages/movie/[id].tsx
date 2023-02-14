@@ -1,12 +1,11 @@
-import { IProps } from "./MoviePage.types";
-import * as S from "@/style/ResultPage";
+import { IProps } from "@/types/MoviePage.types";
+import * as S from "@/style/ResultPage.style";
 import IMovie from "@/types/IMovie";
 import urlBuilder from "@/utils/urlBuilder";
 import { GoPrimitiveDot } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
 import { FaImdb } from "react-icons/fa";
 import { paramCase } from "change-case";
-import { notFound } from "next/navigation";
 import WatchProviders from "@/components/WatchProviders";
 import TmdbLogo from "@/components/Icons/TmdbLogo";
 import ResultMeta from "@/components/Meta/ResultMeta";
@@ -18,28 +17,7 @@ const formatTime = (mins: number): string => {
   return `${h}h${paddedM}m`;
 };
 
-const getMovie = async (id: string): Promise<IMovie> => {
-  const request = await fetch(urlBuilder(`/api/movie`, { id }), {
-    cache: "no-store",
-  });
-
-  if (request.status === 404) {
-    notFound();
-  }
-
-  if (!request.ok) {
-    throw new Error("500 Something went wrong");
-  }
-
-  const result = await request.json();
-
-  return result;
-};
-
-const Movie = async ({ params }: IProps) => {
-  const { id } = params;
-  const movie = await getMovie(id);
-
+const Movie = ({ movie }: IProps) => {
   return (
     <>
       <ResultMeta
@@ -104,6 +82,38 @@ const Movie = async ({ params }: IProps) => {
       </S.Container>
     </>
   );
+};
+
+export const getServerSideProps = async ({
+  params,
+}: {
+  params: { id: string };
+}) => {
+  const { id } = params;
+  const request = await fetch(urlBuilder(`/api/movie`, { id }), {
+    cache: "no-store",
+  });
+
+  if (request.status === 404) {
+    return {
+      props: {
+        movie: {},
+      },
+      notFound: true,
+    };
+  }
+
+  if (!request.ok) {
+    throw new Error("Something went wrong");
+  }
+
+  const result = await request.json();
+
+  return {
+    props: {
+      movie: result,
+    },
+  };
 };
 
 export default Movie;

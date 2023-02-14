@@ -1,5 +1,3 @@
-"use client";
-
 import styled from "styled-components";
 import IBackdropContainer from "@/types/IBackdropContainer";
 import { GoPrimitiveDot } from "react-icons/go";

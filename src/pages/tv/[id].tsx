@@ -1,5 +1,5 @@
-import { IProps } from "./TvPage.types";
-import * as S from "@/style/ResultPage";
+import { IProps } from "@/types/TvPage.types";
+import * as S from "@/style/ResultPage.style";
 import urlBuilder from "@/utils/urlBuilder";
 import { GoPrimitiveDot } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
@@ -9,29 +9,9 @@ import { notFound } from "next/navigation";
 import WatchProviders from "@/components/WatchProviders";
 import TmdbLogo from "@/components/Icons/TmdbLogo";
 import ResultMeta from "@/components/Meta/ResultMeta";
+import { NextPage } from "next";
 
-const getTv = async (id: string): Promise<ITv> => {
-  const request = await fetch(urlBuilder(`/api/tv`, { id }), {
-    cache: "no-store",
-  });
-
-  if (request.status === 404) {
-    notFound();
-  }
-
-  if (!request.ok) {
-    throw new Error("Something went wrong");
-  }
-
-  const result = await request.json();
-
-  return result;
-};
-
-const Movie = async ({ params }: IProps) => {
-  const { id } = params;
-  const show = await getTv(id);
-
+const Tv = ({ show }: IProps) => {
   return (
     <>
       <ResultMeta
@@ -95,4 +75,36 @@ const Movie = async ({ params }: IProps) => {
   );
 };
 
-export default Movie;
+export const getServerSideProps = async ({
+  params,
+}: {
+  params: { id: string };
+}) => {
+  const { id } = params;
+  const request = await fetch(urlBuilder(`/api/tv`, { id }), {
+    cache: "no-store",
+  });
+
+  if (request.status === 404) {
+    return {
+      props: {
+        show: {},
+      },
+      notFound: true,
+    };
+  }
+
+  if (!request.ok) {
+    throw new Error("Something went wrong");
+  }
+
+  const result = await request.json();
+
+  return {
+    props: {
+      show: result,
+    },
+  };
+};
+
+export default Tv;

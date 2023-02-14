@@ -1,5 +1,3 @@
-"use client";
-
 import translateCountryCode from "@/utils/translateCountryCode";
 import { ChangeEvent, FC, useContext, useEffect, useState } from "react";
 import { IProps } from "./WatchProviders.types";
