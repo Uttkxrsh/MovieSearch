@@ -63,7 +63,7 @@ export const Main = styled.div`
 
   > div {
     width: 60%;
-    padding: 48px 48px 90px 48px;
+    padding: 48px 48px 24px 48px;
 
     @media screen and (max-width: 1024px) {
       width: 100%;
