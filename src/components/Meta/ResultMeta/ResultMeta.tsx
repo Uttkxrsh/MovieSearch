@@ -9,7 +9,7 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
     <Head key="meta">
       <title key="page_title">{`${title} - ${APP_TITLE}`}</title>
       <meta
-        name="og:title"
+        property="og:title"
         content={`${title} - ${APP_TITLE}`}
         key="og:title"
       />
@@ -20,7 +20,7 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
       />
 
       <meta
-        name="description"
+        property="description"
         content={`Find where to watch ${title}`}
         key="description"
       />
@@ -31,7 +31,7 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
       />
 
       <meta
-        name="og:type"
+        property="og:type"
         content={`video.${type === "movie" ? "movie" : "tv_show"}`}
         key="og:type"
       />
@@ -43,7 +43,7 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
 
       {APP_URL && (
         <meta
-          name="og:url"
+          property="og:url"
           content={`${APP_URL.endsWith("/") ? APP_URL : `${APP_URL}/`}${
             type === "movie" ? "movie" : "tv"
           }/${id}`}
@@ -53,14 +53,14 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
 
       {image && (
         <meta
-          name="og:image"
+          property="og:image"
           content={`https://image.tmdb.org/t/p/original${image}`}
           key="og:image"
         />
       )}
       {image && (
         <meta
-          name="og:image:alt"
+          property="og:image:alt"
           content={`Poster for ${title}`}
           key="og:image:alt"
         />
