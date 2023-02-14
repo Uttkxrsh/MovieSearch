@@ -6,7 +6,11 @@ const useCountry = (): string | null => {
   const [country, setCountry] = useState<string | null>(null);
 
   const getCountry = async () => {
-    const request = await fetch(urlBuilder("/api/getCountry"));
+    const request = await fetch(
+      urlBuilder("/api/getCountry", {
+        tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      })
+    );
 
     if (request.ok) {
       const response = await request.text();
@@ -25,7 +29,7 @@ const useCountry = (): string | null => {
       setCountry(savedCountry);
     } else {
       (async () => {
-        await getCountry();
+        getCountry();
       })();
     }
   }, []);

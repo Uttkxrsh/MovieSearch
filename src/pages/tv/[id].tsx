@@ -4,14 +4,12 @@ import urlBuilder from "@/utils/urlBuilder";
 import { GoPrimitiveDot } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";
 import { paramCase } from "change-case";
-import ITv from "@/types/ITv";
-import { notFound } from "next/navigation";
 import WatchProviders from "@/components/WatchProviders";
 import TmdbLogo from "@/components/Icons/TmdbLogo";
 import ResultMeta from "@/components/Meta/ResultMeta";
 import { NextPage } from "next";
 
-const Tv = ({ show }: IProps) => {
+const Tv: NextPage<IProps> = ({ show }) => {
   return (
     <>
       <ResultMeta

@@ -9,13 +9,13 @@ import useCountry from "@/hooks/useCountry";
 const WatchProviders: FC<IProps> = ({ providers }) => {
   const { results } = providers;
   const country = useCountry();
-  const [selectedCountry, setSelectedCountry] = useState<string | null>(
-    country
-  );
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
 
   const selectCountry = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountry(e.target.value);
   };
+
+  useEffect(() => setSelectedCountry(country), [country]);
 
   return (
     <S.Container>
@@ -41,7 +41,7 @@ const WatchProviders: FC<IProps> = ({ providers }) => {
       </S.CountrySelector>
       {selectedCountry && (
         <S.Platforms>
-          {results[selectedCountry].flatrate && (
+          {(results[selectedCountry] || {})?.flatrate && (
             <S.WatchOption>
               <p>Stream</p>
               <S.PlatformList>
@@ -55,7 +55,7 @@ const WatchProviders: FC<IProps> = ({ providers }) => {
               </S.PlatformList>
             </S.WatchOption>
           )}
-          {results[selectedCountry].rent && (
+          {(results[selectedCountry] || {})?.rent && (
             <S.WatchOption>
               <p>Rent</p>
               <S.PlatformList>
@@ -69,7 +69,7 @@ const WatchProviders: FC<IProps> = ({ providers }) => {
               </S.PlatformList>
             </S.WatchOption>
           )}
-          {results[selectedCountry].buy && (
+          {(results[selectedCountry] || {})?.buy && (
             <S.WatchOption>
               <p>Buy</p>
               <S.PlatformList>
