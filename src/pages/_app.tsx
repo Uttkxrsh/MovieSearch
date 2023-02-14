@@ -12,15 +12,13 @@ const RootLayout = ({
   pageProps: any;
 }) => {
   return (
-    <StyledComponentsRegistry>
-      <>
-        <PageMeta />
-        <Tracking />
-        <GlobalStyles />
-        <Component {...pageProps} />
-        <Footer />
-      </>
-    </StyledComponentsRegistry>
+    <>
+      <PageMeta />
+      <Tracking />
+      <GlobalStyles />
+      <Component {...pageProps} />
+      <Footer />
+    </>
   );
 };
 
