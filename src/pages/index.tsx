@@ -57,9 +57,12 @@ const Home = () => {
         <div>
           <h1>{APP_TITLE}</h1>
           <S.FormContainer>
+            <S.Label htmlFor="query" aria-label="Search">
+              Search
+            </S.Label>
             <S.InputContainer>
-              <S.Label htmlFor="query">Search</S.Label>
               <input
+                aria-label="Search"
                 type="text"
                 id="query"
                 onChange={(e) => setQuery(e.target.value)}

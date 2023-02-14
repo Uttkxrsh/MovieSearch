@@ -14,7 +14,8 @@ export const Container = styled.div`
 `;
 
 export const Label = styled.label`
-  display: none;
+  position: absolute;
+  top: -110%;
 `;
 
 export const FormContainer = styled.div`

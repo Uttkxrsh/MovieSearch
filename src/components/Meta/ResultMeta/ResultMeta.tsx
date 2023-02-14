@@ -20,7 +20,7 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
       />
 
       <meta
-        property="description"
+        name="description"
         content={`Find where to watch ${title}`}
         key="description"
       />
