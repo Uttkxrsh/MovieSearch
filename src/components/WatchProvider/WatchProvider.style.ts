@@ -26,3 +26,9 @@ export const Tooltip = styled.div<ITooltipProps>`
       opacity: 0.9;
     `}
 `;
+
+export const ImageWrapper = styled.div`
+  width: 45px;
+  height: 45px;
+  position: relative;
+`;

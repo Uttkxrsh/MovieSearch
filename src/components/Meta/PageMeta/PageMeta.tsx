@@ -3,9 +3,11 @@ import { IProps } from "./PageMeta.types";
 import { APP_DESCRIPTION, APP_TITLE } from "@/lib/constants";
 import Head from "next/head";
 
-const PageMeta: FC<IProps> = ({ title, image }) => {
+const PageMeta: FC<IProps> = ({ title, image, noIndex }) => {
   return (
     <Head key="meta">
+      {noIndex && <meta name="robots" content="noindex" />}
+
       <title key="title">{title || APP_TITLE}</title>
       <meta property="og:title" content={title || APP_TITLE} key="og:title" />
       <meta

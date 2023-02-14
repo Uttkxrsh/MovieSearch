@@ -13,8 +13,12 @@ export const BackdropContainer = styled.div<IBackdropContainer>`
   left: 0;
   z-index: -10;
 
-  @media screen and (max-width: 1023px) {
+  @media screen and (max-width: 1024px) {
     position: unset;
+
+    height: 420px;
+    min-height: 420px;
+    max-height: 420px;
   }
 
   @media screen and (min-width: 1024px) {
@@ -42,6 +46,12 @@ export const Backdrop = styled.img`
   display: block;
   width: 100%;
   height: 100%;
+
+  @media screen and (max-width: 1024px) {
+    height: 420px;
+    min-height: 420px;
+    max-height: 420px;
+  }
 `;
 
 export const Main = styled.div`
