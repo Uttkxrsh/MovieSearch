@@ -72,7 +72,7 @@ const Home = () => {
                     onClick={() => setQuery("")}
                   />
                 )}
-                {true ? (
+                {isFetching ? (
                   <Loader size="16px" />
                 ) : (
                   <AiOutlineSearch
