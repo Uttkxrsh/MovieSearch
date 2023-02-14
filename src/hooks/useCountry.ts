@@ -1,21 +1,35 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import urlBuilder from "@/utils/urlBuilder";
 
 const useCountry = (): string | null => {
   const [country, setCountry] = useState<string | null>(null);
 
-  useEffect(() => {
-    (async () => {
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      const request = await fetch(`/api/getCountry?tz=${timezone}`);
+  const getCountry = async () => {
+    const request = await fetch(urlBuilder("/api/getCountry"));
 
-      if (request.status === 200) {
-        const result = await request.text();
+    if (request.ok) {
+      const response = await request.text();
 
-        setCountry(result);
+      if (response.length === 2) {
+        setCountry(response);
+        Cookies.set("wtw_country", response);
       }
-    })();
+    }
+  };
+
+  useEffect(() => {
+    const savedCountry = Cookies.get("wtw_country");
+
+    if (savedCountry && savedCountry.length === 2) {
+      setCountry(savedCountry);
+    } else {
+      (async () => {
+        await getCountry();
+      })();
+    }
   }, []);
 
   return country;

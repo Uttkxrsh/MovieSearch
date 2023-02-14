@@ -6,21 +6,18 @@ import { IProps } from "./WatchProviders.types";
 import WatchProvider from "@/components/WatchProvider";
 import * as S from "./WatchProviders.style";
 import CountryContext from "@/context/CountryContext";
+import useCountry from "@/hooks/useCountry";
 
 const WatchProviders: FC<IProps> = ({ providers }) => {
   const { results } = providers;
-  const country = useContext(CountryContext);
-  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const country = useCountry();
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(
+    country
+  );
 
   const selectCountry = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountry(e.target.value);
   };
-
-  useEffect(() => {
-    if (country !== null && results[country]) {
-      setSelectedCountry(country);
-    }
-  }, [country]);
 
   return (
     <S.Container>
