@@ -41,15 +41,6 @@ export const InputContainer = styled.div`
     font-family: "Fira mono", monospace;
   }
 
-  > div {
-    display: flex;
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    column-gap: 8px;
-  }
-
   svg {
     cursor: pointer;
   }
@@ -66,4 +57,14 @@ export const MoreContainer = styled.div`
   a {
     color: white;
   }
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  column-gap: 8px;
+  align-items: center;
 `;

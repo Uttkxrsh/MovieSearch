@@ -64,7 +64,7 @@ const Home = () => {
                 onKeyDown={handleInputSubmit}
                 value={query}
               />
-              <div>
+              <S.IconWrapper>
                 {query.length > 0 && (
                   <IoClose
                     size="24px"
@@ -72,7 +72,7 @@ const Home = () => {
                     onClick={() => setQuery("")}
                   />
                 )}
-                {isFetching ? (
+                {true ? (
                   <Loader size="16px" />
                 ) : (
                   <AiOutlineSearch
@@ -81,7 +81,7 @@ const Home = () => {
                     onClick={() => router.push(`/search/${query}`)}
                   />
                 )}
-              </div>
+              </S.IconWrapper>
             </S.InputContainer>
             {searchResults && (
               <S.SearchResults>
