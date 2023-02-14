@@ -3,6 +3,7 @@ import PageMeta from "@/components/Meta/PageMeta";
 import Tracking from "@/components/Tracking";
 import GlobalStyles from "@/lib/GlobalStyles";
 import StyledComponentsRegistry from "@/lib/registry";
+import styled from "styled-components";
 
 const RootLayout = ({
   Component,

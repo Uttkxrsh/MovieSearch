@@ -13,7 +13,18 @@ export const Container = styled.div`
   }
 `;
 
-export const FormContainer = styled.div``;
+export const FormContainer = styled.div`
+  min-width: 570px;
+  width: 570px;
+  max-width: 570px;
+
+  @media screen and (max-width: 720px) {
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+`;
 
 export const InputContainer = styled.div`
   position: relative;

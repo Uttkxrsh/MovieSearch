@@ -7,7 +7,8 @@ export const WrapperLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 518px;
+  max-width: 570px;
+  width: 100%;
   color: white;
   text-decoration: none;
 
