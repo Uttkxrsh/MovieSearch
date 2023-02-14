@@ -7,41 +7,41 @@ const PageMeta: FC<IProps> = ({ title, image }) => {
   return (
     <Head key="meta">
       <title key="title">{title || APP_TITLE}</title>
-      <meta property="og:title" content={title || APP_TITLE} key="og:title" />
+      <meta name="og:title" content={title || APP_TITLE} key="og:title" />
       <meta
-        property="twitter:title"
+        name="twitter:title"
         content={title || APP_TITLE}
         key="twitter:title"
       />
 
       <meta name="description" content={APP_DESCRIPTION} key="description" />
       <meta
-        property="twitter:description"
+        name="twitter:description"
         content={APP_DESCRIPTION}
         key="twitter:description"
       />
 
-      <meta property="og:type" content="website" key="og:type" />
+      <meta name="og:type" content="website" key="og:type" />
       <meta
-        property="twitter:card"
+        name="twitter:card"
         content="summary_large_image"
         key="twitter:card"
       />
 
-      {image && <meta property="og:image" content={image} key="og:image" />}
+      {image && <meta name="og:image" content={image} key="og:image" />}
       {image && (
         <meta
-          property="og:image:alt"
+          name="og:image:alt"
           content={title || APP_TITLE}
           key="og:image:alt"
         />
       )}
       {image && (
-        <meta property="twitter:image" content={image} key="twitter:image" />
+        <meta name="twitter:image" content={image} key="twitter:image" />
       )}
       {image && (
         <meta
-          property="twitter:image:alt"
+          name="twitter:image:alt"
           content={title || APP_TITLE}
           key="twitter:image:alt"
         />

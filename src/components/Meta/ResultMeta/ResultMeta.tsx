@@ -9,12 +9,12 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
     <Head key="meta">
       <title key="page_title">{`${title} - ${APP_TITLE}`}</title>
       <meta
-        property="og:title"
+        name="og:title"
         content={`${title} - ${APP_TITLE}`}
         key="og:title"
       />
       <meta
-        property="twitter:title"
+        name="twitter:title"
         content={`${title} - ${APP_TITLE}`}
         key="twitter:title"
       />
@@ -25,25 +25,25 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
         key="description"
       />
       <meta
-        property="twitter:description"
+        name="twitter:description"
         content={`Find where to watch ${title}`}
         key="twitter:description"
       />
 
       <meta
-        property="og:type"
+        name="og:type"
         content={`video.${type === "movie" ? "movie" : "tv_show"}`}
         key="og:type"
       />
       <meta
-        property="twitter:card"
+        name="twitter:card"
         content="summary_large_image"
         key="twitter:card"
       />
 
       {APP_URL && (
         <meta
-          property="og:url"
+          name="og:url"
           content={`${APP_URL.endsWith("/") ? APP_URL : `${APP_URL}/`}${
             type === "movie" ? "movie" : "tv"
           }/${id}`}
@@ -53,28 +53,28 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
 
       {image && (
         <meta
-          property="og:image"
+          name="og:image"
           content={`https://image.tmdb.org/t/p/original${image}`}
           key="og:image"
         />
       )}
       {image && (
         <meta
-          property="og:image:alt"
+          name="og:image:alt"
           content={`Poster for ${title}`}
           key="og:image:alt"
         />
       )}
       {image && (
         <meta
-          property="twitter:image"
+          name="twitter:image"
           content={`https://image.tmdb.org/t/p/original${image}`}
           key="twitter:image"
         />
       )}
       {image && (
         <meta
-          property="twitter:image:alt"
+          name="twitter:image:alt"
           content={`Poster for ${title}`}
           key="twitter:image:alt"
         />
