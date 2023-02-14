@@ -1,4 +1,4 @@
-import { APP_URL } from "@/lib/constants";
+import { APP_TITLE, APP_URL } from "@/lib/constants";
 import Head from "next/head";
 import { FC } from "react";
 import { IProps } from "./ResultMeta.types";
@@ -7,9 +7,17 @@ import { IProps } from "./ResultMeta.types";
 const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
   return (
     <Head key="meta">
-      <title key="page_title">{title}</title>
-      <meta property="og:title" content={title} key="og:title" />
-      <meta property="twitter:title" content={title} key="twitter:title" />
+      <title key="page_title">{`${title} - ${APP_TITLE}`}</title>
+      <meta
+        property="og:title"
+        content={`${title} - ${APP_TITLE}`}
+        key="og:title"
+      />
+      <meta
+        property="twitter:title"
+        content={`${title} - ${APP_TITLE}`}
+        key="twitter:title"
+      />
 
       <meta
         name="description"
