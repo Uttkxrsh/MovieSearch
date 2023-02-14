@@ -1,15 +1,19 @@
-const urlBuilder = (
-  endpoint: string,
-  parameters?: { [key: string]: string }
-): string => {
-  if (endpoint.indexOf("/") === 0) endpoint = endpoint.substring(1);
+import { APP_URL } from "@/lib/constants";
 
-  const parsedParameters = new URLSearchParams({
-    api_key: process.env.REACT_APP_TMDB_API_KEY ?? "",
-    ...parameters,
-  });
+const urlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
+  if (endpoint.startsWith("/")) {
+    endpoint = endpoint.slice(1);
+  }
 
-  return `https://api.themoviedb.org/3/${endpoint}?${parsedParameters}`;
+  const queryItems = new URLSearchParams({});
+
+  if (query) {
+    for (const key of Object.keys(query)) {
+      queryItems.append(key, query[key]);
+    }
+  }
+
+  return `${APP_URL}${endpoint}?${queryItems.toString()}`;
 };
 
 export default urlBuilder;
