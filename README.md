@@ -1,6 +1,8 @@
 <img src="https://i.giphy.com/media/l0HlSeOg7IUsR5Wec/giphy.webp" style="width:100%;" />
-![License](https://img.shields.io/github/license/theo0165/where-to-watch?style=flat-square)
-![Status](https://img.shields.io/website?down_message=offline&label=status&style=flat-square&up_message=online&url=https%3A%2F%2Fwhere-to-watch.theosandell.com)
+<div>
+<img src="https://img.shields.io/github/license/theo0165/where-to-watch?style=flat-square" />
+<img src="https://img.shields.io/website?down_message=offline&label=status&style=flat-square&up_message=online&url=https%3A%2F%2Fwhere-to-watch.theosandell.com" />
+</div>
 
 # Where to watch?
 
