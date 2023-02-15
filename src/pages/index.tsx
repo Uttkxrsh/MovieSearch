@@ -63,6 +63,7 @@ const Home = () => {
             <S.InputContainer>
               <input
                 aria-label="Search"
+                enterKeyHint="search"
                 type="text"
                 id="query"
                 onChange={(e) => setQuery(e.target.value)}

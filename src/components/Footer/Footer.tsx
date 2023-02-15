@@ -1,9 +1,10 @@
 import { FC } from "react";
 import * as S from "./Footer.style";
+import { IProps } from "./Footer.types";
 
-const Footer: FC = () => {
+const Footer: FC<IProps> = ({ mobileFixed }) => {
   return (
-    <S.Container>
+    <S.Container mobileFixed={mobileFixed}>
       <S.Links>
         <p>
           made by <a href="https://github.com/theo0165">Theo Sandell</a>

@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { IProps } from "./Footer.types";
 
-export const Container = styled.div`
+export const Container = styled.div<IProps>`
   position: fixed;
   bottom: 24px;
   left: 50%;
@@ -14,10 +15,17 @@ export const Container = styled.div`
 
   @media screen and (max-width: 1024px) {
     width: 100%;
-    bottom: -1px;
     max-width: 100%;
     border-radius: 0px;
     padding: 24px;
+    bottom: -1px;
+
+    ${({ mobileFixed }) =>
+      mobileFixed &&
+      css`
+        position: static;
+        transform: translateX(0);
+      `}
   }
 `;
 
