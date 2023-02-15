@@ -29,7 +29,11 @@ const RootLayout = ({
       <GlobalStyles />
       <Component {...pageProps} />
       <Footer
-        mobileFixed={pathname?.includes("/tv") || pathname?.includes("/movie")}
+        mobileFixed={
+          pathname?.includes("/tv") ||
+          pathname?.includes("/movie") ||
+          pathname?.includes("/search")
+        }
       />
     </Wrapper>
   );

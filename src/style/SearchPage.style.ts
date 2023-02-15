@@ -6,6 +6,10 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
 
+  @media screen and (max-width: 1024px) {
+    padding-bottom: 0px;
+  }
+
   h1 {
     margin-bottom: 24px;
     max-width: 520px;
