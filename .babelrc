@@ -1,7 +1,7 @@
 {
   "presets": ["next/babel"],
   "plugins": [
-    ["styled-components", { "ssr": true, "displayName": false }],
-    "transform-remove-console"
+    ["styled-components", { "ssr": true, "displayName": false }]
+    // "transform-remove-console"
   ]
 }

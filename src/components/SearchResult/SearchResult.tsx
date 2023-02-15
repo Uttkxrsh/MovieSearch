@@ -11,7 +11,7 @@ const SearchResult: FC<IProps> = ({ id, posterPath, title, isMovie }) => {
       <div>
         <S.ImageWrapper>
           <Image
-            alt={`Poster for ${title}`}
+            alt={posterPath ? `Poster for ${title}` : "Missing poster"}
             src={
               posterPath
                 ? `https://image.tmdb.org/t/p/w92/${posterPath}`
@@ -21,7 +21,10 @@ const SearchResult: FC<IProps> = ({ id, posterPath, title, isMovie }) => {
             h="100%"
           />
         </S.ImageWrapper>
-        <p>{title}</p>
+        <div>
+          <p>{title}</p>
+          <S.MediaType>{isMovie ? "Movie" : "TV Show"}</S.MediaType>
+        </div>
       </div>
       <IoIosArrowForward size="24px" color="white" />
     </S.WrapperLink>

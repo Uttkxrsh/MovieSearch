@@ -34,7 +34,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <style>{`@font-face {font-family: 'Fira Mono';font-style: normal;font-weight: 400;font-display: swap;src: url("/FiraMono.woff2") format('woff2');}@font-face {font-family: 'Fira Mono Fallback';font-style: normal;font-weight: 400;src: local('Courier New');ascent-override: 93.52%;descent-override: 26.50%;line-gap-override: 0.00%;size-adjust: 99.98%;}`}</style>
+          <style>{`@font-face {font-family: 'Fira Mono';font-style: normal;font-weight: 400;font-display: swap;src: url('FiraMono.woff2') format('woff2');}@font-face {font-family: 'Fira Mono Fallback';font-style: normal;font-weight: 400;src: local('Arial');ascent-override: 71.11%;descent-override: 20.15%;line-gap-override: 0.00%;size-adjust: 131.49%;}`}</style>
         </Head>
         <body>
           <Main />

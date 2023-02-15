@@ -40,3 +40,8 @@ export const ImageWrapper = styled.div`
   height: 113px;
   max-height: 113px;
 `;
+
+export const MediaType = styled.p`
+  font-size: 12px;
+  color: #8e8e8e;
+`;
