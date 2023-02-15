@@ -9,7 +9,15 @@ export const Container = styled.div`
   padding: 12px;
   text-align: center;
   border-radius: 8px;
-  width: fit-content;
+  width: 80%;
+  max-width: 650px;
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    bottom: -1px;
+    max-width: 100%;
+    border-radius: 0px;
+  }
 `;
 
 export const Links = styled.div`
