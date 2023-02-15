@@ -1,7 +1,8 @@
 import Footer from "@/components/Footer";
 import PageMeta from "@/components/Meta/PageMeta";
 import Tracking from "@/components/Tracking";
-import GlobalStyles from "@/lib/GlobalStyles";
+import GlobalStyles from "@/style/GlobalStyles";
+import Head from "next/head";
 import styled from "styled-components";
 
 const Wrapper = styled.div`

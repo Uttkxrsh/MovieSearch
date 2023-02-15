@@ -63,11 +63,15 @@ const Movie = ({ movie }: IProps) => {
               <S.Separator size="12px" />
               <S.Links>
                 {movie.imdb_id && (
-                  <a href={`https://www.imdb.com/title/${movie.imdb_id}`}>
+                  <a
+                    aria-label="Imdb"
+                    href={`https://www.imdb.com/title/${movie.imdb_id}`}
+                  >
                     <FaImdb size="32px" />
                   </a>
                 )}
                 <a
+                  aria-label="TMDB"
                   href={`https://www.themoviedb.org/movie/${
                     movie.id
                   }-${paramCase(movie.title)}`}
