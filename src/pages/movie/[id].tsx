@@ -30,6 +30,10 @@ const Movie = ({ movie }: IProps) => {
         <S.BackdropContainer isBackdrop={!!movie.backdrop_path}>
           {movie.backdrop_path && (
             <S.Backdrop
+              priority
+              fill
+              placeholder="blur"
+              blurDataURL={`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
               alt={`Backdrop for ${movie.title}`}
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             />

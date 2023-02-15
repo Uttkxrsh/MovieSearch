@@ -2,6 +2,7 @@ import styled from "styled-components";
 import IBackdropContainer from "@/types/IBackdropContainer";
 import { GoPrimitiveDot } from "react-icons/go";
 import Link from "next/link";
+import Image from "next/image";
 
 export const Container = styled.div``;
 
@@ -14,7 +15,7 @@ export const BackdropContainer = styled.div<IBackdropContainer>`
   z-index: -10;
 
   @media screen and (max-width: 1024px) {
-    position: unset;
+    position: relative;
 
     height: 420px;
     min-height: 420px;
@@ -40,7 +41,7 @@ export const BackdropContainer = styled.div<IBackdropContainer>`
   }
 `;
 
-export const Backdrop = styled.img`
+export const Backdrop = styled(Image)`
   object-fit: cover;
   object-position: center;
   display: block;

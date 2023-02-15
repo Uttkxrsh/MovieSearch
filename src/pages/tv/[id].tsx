@@ -22,6 +22,10 @@ const Tv: NextPage<IProps> = ({ show }) => {
         <S.BackdropContainer isBackdrop={!!show.backdrop_path}>
           {show.backdrop_path && (
             <S.Backdrop
+              priority
+              fill
+              placeholder="blur"
+              blurDataURL={`https://image.tmdb.org/t/p/w300${show.backdrop_path}`}
               alt={`Backdrop for ${show.name}`}
               src={`https://image.tmdb.org/t/p/original${show.backdrop_path}`}
             />
