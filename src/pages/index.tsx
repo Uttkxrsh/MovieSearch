@@ -45,7 +45,13 @@ const Home = () => {
   }, [query]);
 
   const handleInputSubmit = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && query.trim().length > 0) {
+      router.push(`/search/${query}`);
+    }
+  };
+
+  const handleSearchRedirect = () => {
+    if (query.trim().length > 0) {
       router.push(`/search/${query}`);
     }
   };
@@ -84,7 +90,7 @@ const Home = () => {
                   <AiOutlineSearch
                     size="26px"
                     color="#ffffff"
-                    onClick={() => router.push(`/search/${query}`)}
+                    onClick={handleSearchRedirect}
                   />
                 )}
               </S.IconWrapper>
