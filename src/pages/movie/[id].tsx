@@ -1,6 +1,5 @@
 import { IProps } from "@/types/MoviePage.types";
 import * as S from "@/style/ResultPage.style";
-import IMovie from "@/types/IMovie";
 import urlBuilder from "@/utils/urlBuilder";
 import { GoPrimitiveDot } from "react-icons/go";
 import { IoMdStar } from "react-icons/io";

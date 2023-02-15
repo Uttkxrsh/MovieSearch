@@ -1,9 +1,8 @@
 import translateCountryCode from "@/utils/translateCountryCode";
-import { ChangeEvent, FC, useContext, useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { IProps } from "./WatchProviders.types";
 import WatchProvider from "@/components/WatchProvider";
 import * as S from "./WatchProviders.style";
-import CountryContext from "@/context/CountryContext";
 import useCountry from "@/hooks/useCountry";
 
 const WatchProviders: FC<IProps> = ({ providers }) => {
