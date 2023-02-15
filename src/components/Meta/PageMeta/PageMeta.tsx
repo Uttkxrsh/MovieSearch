@@ -18,6 +18,11 @@ const PageMeta: FC<IProps> = ({ title, image, noIndex }) => {
 
       <meta name="description" content={APP_DESCRIPTION} key="description" />
       <meta
+        property="og:description"
+        content={`Find where to watch ${title}`}
+        key="og:description"
+      />
+      <meta
         name="twitter:description"
         content={APP_DESCRIPTION}
         key="twitter:description"

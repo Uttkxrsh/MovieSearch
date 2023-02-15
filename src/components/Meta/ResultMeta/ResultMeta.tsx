@@ -25,6 +25,11 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
         key="description"
       />
       <meta
+        property="og:description"
+        content={`Find where to watch ${title}`}
+        key="og:description"
+      />
+      <meta
         name="twitter:description"
         content={`Find where to watch ${title}`}
         key="twitter:description"
