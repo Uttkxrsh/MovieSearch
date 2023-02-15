@@ -24,6 +24,8 @@ const Movie = ({ movie }: IProps) => {
         title={movie.title}
         image={movie.backdrop_path}
         id={`${movie.id}`}
+        rating={movie.vote_average}
+        ratingCount={movie.vote_count}
       />
       <S.Container>
         <S.BackdropContainer isBackdrop={!!movie.backdrop_path}>

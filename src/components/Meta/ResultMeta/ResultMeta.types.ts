@@ -3,4 +3,6 @@ export interface IProps {
   image?: string | null;
   type: "movie" | "tv";
   id: string;
+  rating: number;
+  ratingCount: number;
 }

@@ -4,7 +4,14 @@ import { FC } from "react";
 import { IProps } from "./ResultMeta.types";
 
 // TODO: Default image
-const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
+const ResultMeta: FC<IProps> = ({
+  title,
+  image,
+  type,
+  id,
+  rating,
+  ratingCount,
+}) => {
   return (
     <Head key="meta">
       <title key="page_title">{`${title} - ${APP_TITLE}`}</title>
@@ -17,6 +24,14 @@ const ResultMeta: FC<IProps> = ({ title, image, type, id }) => {
         name="twitter:title"
         content={`${title} - ${APP_TITLE}`}
         key="twitter:title"
+      />
+
+      <meta key="og:rating" property="og:rating" content={rating.toFixed(1)} />
+      <meta key="og:rating_scale" property="og:rating_scale" content="10" />
+      <meta
+        key="og:rating_count"
+        property="og:rating_count"
+        content={`${ratingCount}`}
       />
 
       <meta

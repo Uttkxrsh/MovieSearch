@@ -17,6 +17,8 @@ const Tv: NextPage<IProps> = ({ show }) => {
         title={show.name}
         image={show.backdrop_path}
         id={`${show.id}`}
+        rating={show.vote_average}
+        ratingCount={show.vote_count}
       />
       <S.Container>
         <S.BackdropContainer isBackdrop={!!show.backdrop_path}>
