@@ -20,7 +20,7 @@ const Movie = ({ movie }: IProps) => {
   return (
     <>
       <ResultMeta
-        type="tv"
+        type="movie"
         title={movie.title}
         image={movie.backdrop_path}
         id={`${movie.id}`}
