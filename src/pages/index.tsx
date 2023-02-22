@@ -85,7 +85,9 @@ const Home = () => {
                   />
                 )}
                 {isFetching ? (
-                  <Loader size="16px" />
+                  <S.LoaderWrapper>
+                    <Loader size="16px" />
+                  </S.LoaderWrapper>
                 ) : (
                   <AiOutlineSearch
                     size="26px"

@@ -73,3 +73,11 @@ export const IconWrapper = styled.div`
   column-gap: 8px;
   align-items: center;
 `;
+
+export const LoaderWrapper = styled.div`
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
