@@ -1,11 +1,13 @@
 import { APP_URL } from "@/lib/constants";
 
 const urlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
-  if (endpoint.startsWith("/")) {
-    endpoint = endpoint.slice(1);
-  }
+  // Ensure the base URL ends with a slash
+  const baseUrl = APP_URL.endsWith('/') ? APP_URL : `${APP_URL}/`;
 
-  const queryItems = new URLSearchParams({});
+  // Ensure the endpoint does not start with a slash
+  endpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+
+  const queryItems = new URLSearchParams();
 
   if (query) {
     for (const key of Object.keys(query)) {
@@ -13,7 +15,10 @@ const urlBuilder = (endpoint: string, query?: { [key: string]: any }) => {
     }
   }
 
-  return `${APP_URL}${endpoint}?${queryItems.toString()}`;
+  const queryString = queryItems.toString();
+  return queryString ? `${baseUrl}${endpoint}?${queryString}` : `${baseUrl}${endpoint}`;
 };
 
 export default urlBuilder;
+
+

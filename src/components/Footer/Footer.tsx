@@ -7,15 +7,14 @@ const Footer: FC<IProps> = ({ mobileFixed }) => {
     <S.Container mobileFixed={mobileFixed}>
       <S.Links>
         <p>
-          made by <a href="https://github.com/theo0165">Theo Sandell</a>
+          made by <a href="https://github.com/theo0165">Uttkarsh Singh</a>
         </p>
         <span>|</span>
         <a href="https://github.com/theo0165/where-to-watch">fork on github</a>
       </S.Links>
       <S.Small>
         This product uses the{" "}
-        <a href="https://developers.themoviedb.org">TMDB API</a> but is not
-        endorsed or certified by <a href="https://themoviedb.org">TMDB</a>.
+        <a href="https://developers.themoviedb.org">TMDB API</a><a href="https://themoviedb.org"></a>.
       </S.Small>
     </S.Container>
   );
