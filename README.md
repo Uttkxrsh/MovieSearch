@@ -8,8 +8,6 @@
 
 Search for movies and see information on where to stream, rent or buy them. Built with Next.js, styled components and <a href="https://developers.themoviedb.org/">The Movie DB API</a>.
 
-Visit the website at <https://where-to-watch.theosandell.com>
-
 **Installation**
 
 1. Clone the repo to your local machine
